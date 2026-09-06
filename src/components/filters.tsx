@@ -51,10 +51,16 @@ function Fieldset({
           : "var(--rule-thin) solid var(--rule-quiet)",
       }}
     >
+      {/* A legend sits on the fieldset's border by default, so the rule
+          runs into the words. Padding the inline edges lets the ground
+          break the line cleanly on both sides of the text. */}
       <legend
-        className={lead ? "p-0 mb-hair" : "rubric p-0 mb-palm"}
-        style={
-          lead
+        className={lead ? "mb-hair" : "rubric mb-palm"}
+        style={{
+          paddingInlineStart: 0,
+          paddingInlineEnd: "var(--m-foot)",
+          background: "var(--paper)",
+          ...(lead
             ? {
                 fontFamily: "var(--font-record)",
                 fontSize: "var(--t-record)",
@@ -62,8 +68,8 @@ function Fieldset({
                 letterSpacing: "var(--tr-cubit)",
                 color: "var(--ink)",
               }
-            : undefined
-        }
+            : {}),
+        }}
       >
         {legend}
       </legend>

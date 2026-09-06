@@ -1153,4 +1153,114 @@ input, select, textarea, button { font: inherit; color: inherit; }
   -webkit-overflow-scrolling: touch;
 }
 
+
+/* ============================================================
+   THE WEIGHTS
+
+   The method page's dimension table was stating the weights in
+   numerals and showing nothing. A reader cannot feel that
+   service is worth three times management from "30" and "10"
+   set at the same size a line apart.
+
+   Each dimension gets a measured bar at the scale's own pitch,
+   so thirty points is visibly three times ten. This is the
+   nilometer applied to the method itself.
+   ============================================================ */
+
+.weights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.weight {
+  display: grid;
+  grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--m-foot);
+  padding: var(--m-palm) 0;
+  border-top: var(--rule-thin) solid var(--rule-quiet);
+}
+
+.weight__name {
+  font-family: var(--font-record);
+  font-size: var(--t-record);
+  font-weight: 500;
+  letter-spacing: var(--tr-cubit);
+  color: var(--ink);
+  margin: 0;
+}
+.weight__note {
+  display: block;
+  font-family: var(--font-text);
+  font-size: var(--t-micro);
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--ink-tertiary);
+  margin-top: var(--m-hair);
+  max-width: 34ch;
+}
+
+/* The bar. Width is the weight, drawn against the full hundred,
+   so the row is the measurement rather than a label for one. */
+.weight__bar {
+  position: relative;
+  height: var(--m-cubit);
+  background: var(--paper-sunk);
+  align-self: center;
+}
+.weight__fill {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: var(--w, 0%);
+  background: var(--lapis);
+  transform-origin: left center;
+}
+[dir="rtl"] .weight__fill { transform-origin: right center; }
+
+/* Gradations across the bar's track at ten-point intervals, so
+   the eye can read the value off the scale and not only from
+   the numeral beside it. */
+.weight__bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--rule-plain) 0 1px,
+    transparent 1px 10%
+  );
+  opacity: 0.5;
+}
+
+.weight__n {
+  font-family: var(--font-record);
+  font-size: var(--t-station);
+  font-weight: 600;
+  letter-spacing: var(--tr-cubit);
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--ink);
+  line-height: 1;
+  min-width: 3ch;
+  text-align: end;
+}
+
+/* The total closes the scale with the heaviest rule the system
+   has, because a hundred points is the whole measure. */
+.weight--total {
+  border-top: var(--rule-crest) solid var(--rule-ink);
+  padding-top: var(--m-foot);
+}
+.weight--total .weight__n { font-size: var(--t-cubit); }
+
+@media (max-width: 48rem) {
+  .weight {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--m-palm) var(--m-foot);
+  }
+  .weight__bar { grid-column: 1 / -1; }
+}
+
 }

@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { BANDS, DIMENSIONS, FLEET_TOTAL, REVIEW_TOTAL, FLEET_AVERAGE_RATING } from "@/lib/fleet";
 import { BandMark } from "@/components/score";
@@ -37,62 +38,43 @@ export default function MethodPage() {
             Five dimensions, {weightTotal} points
           </h2>
 
-          <table className="w-full border-collapse mt-foot max-w-[52rem]">
-            <caption className="sr-only">
-              The five audited dimensions and their maximum scores
-            </caption>
-            <thead>
-              <tr>
-                <th scope="col" className="rubric text-start pb-finger">Dimension</th>
-                <th scope="col" className="rubric text-start pb-finger hidden sm:table-cell">
-                  What the auditor examines
-                </th>
-                <th scope="col" className="rubric text-end pb-finger">Weight</th>
-              </tr>
-            </thead>
-            <tbody>
-              {DIMENSIONS.map((d) => (
-                <tr key={d.key} style={{ borderTop: "var(--rule-thin) solid var(--rule-quiet)" }}>
-                  <th scope="row" className="text-start py-foot pe-foot font-normal align-top">
-                    <span
-                      className="font-[family-name:var(--font-record)] block"
-                      style={{ fontSize: "var(--t-record)", fontWeight: 500 }}
-                    >
-                      {d.label}
-                    </span>
-                    <span className="block text-fine text-ink-secondary sm:hidden mt-hair">
-                      {d.note}
-                    </span>
-                  </th>
-                  <td className="py-foot pe-foot align-top text-fine text-ink-secondary hidden sm:table-cell">
-                    {d.note}
-                  </td>
-                  <td className="py-foot text-end align-top tabular whitespace-nowrap">
-                    <span
-                      className="font-[family-name:var(--font-record)]"
-                      style={{ fontSize: "var(--t-record)", fontWeight: 600 }}
-                    >
-                      {d.max}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-            <tfoot>
-              <tr style={{ borderTop: "var(--rule-mid) solid var(--rule-ink)" }}>
-                <th scope="row" className="text-start pt-palm rubric">Total</th>
-                <td className="hidden sm:table-cell" />
-                <td className="pt-palm text-end tabular">
-                  <span
-                    className="font-[family-name:var(--font-record)]"
-                    style={{ fontSize: "var(--t-station)", fontWeight: 600 }}
-                  >
-                    {weightTotal}
-                  </span>
-                </td>
-              </tr>
-            </tfoot>
-          </table>
+          {/* The weights, drawn at the scale's own pitch: thirty points
+              occupies three times the bar that ten does, so the
+              weighting is visible rather than merely stated. */}
+          <ol className="weights mt-foot max-w-[58rem]">
+            {DIMENSIONS.map((d) => (
+              <li key={d.key} className="weight">
+                <h3 className="weight__name">
+                  {d.label}
+                  <span className="weight__note">{d.note}</span>
+                </h3>
+                <div
+                  className="weight__bar"
+                  role="img"
+                  aria-label={`${d.label} carries ${d.max} of ${weightTotal} points`}
+                >
+                  <div
+                    className="weight__fill rise"
+                    style={
+                      {
+                        "--w": `${(d.max / weightTotal) * 100}%`,
+                        "--rise-from": 0,
+                      } as CSSProperties
+                    }
+                  />
+                </div>
+                <span className="weight__n tabular" aria-hidden="true">
+                  {d.max}
+                </span>
+              </li>
+            ))}
+
+            <li className="weight weight--total">
+              <h3 className="weight__name">Total</h3>
+              <div aria-hidden="true" />
+              <span className="weight__n tabular">{weightTotal}</span>
+            </li>
+          </ol>
 
           <p className="mt-foot text-ink-secondary max-w-[58ch]">
             Service is worth thirty and management ten. That is a judgement, not
