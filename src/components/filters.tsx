@@ -1,6 +1,6 @@
 "use client";
 
-import { useId } from "react";
+import { useId, useState } from "react";
 import { AMENITIES, BANDS, ROUTES } from "@/lib/fleet";
 
 export interface FilterState {
@@ -30,18 +30,96 @@ const controlStyle = {
 function Fieldset({
   legend,
   children,
+  emphasis = "normal",
+  note,
 }: {
   legend: string;
   children: React.ReactNode;
+  /* The quality floor is the product's differentiator and must not
+     read like the twelfth amenity checkbox. */
+  emphasis?: "normal" | "lead";
+  note?: string;
 }) {
+  const lead = emphasis === "lead";
   return (
     <fieldset
       className="m-0 p-0 pt-foot mt-foot"
-      style={{ border: 0, borderTop: "var(--rule-thin) solid var(--rule-quiet)" }}
+      style={{
+        border: 0,
+        borderTop: lead
+          ? "var(--rule-mid) solid var(--rule-ink)"
+          : "var(--rule-thin) solid var(--rule-quiet)",
+      }}
     >
-      <legend className="rubric p-0 mb-palm">{legend}</legend>
+      <legend
+        className={lead ? "p-0 mb-hair" : "rubric p-0 mb-palm"}
+        style={
+          lead
+            ? {
+                fontFamily: "var(--font-record)",
+                fontSize: "var(--t-record)",
+                fontWeight: 600,
+                letterSpacing: "var(--tr-cubit)",
+                color: "var(--ink)",
+              }
+            : undefined
+        }
+      >
+        {legend}
+      </legend>
+      {note && (
+        <p className="text-micro text-ink-tertiary m-0 mb-palm max-w-[30ch]">
+          {note}
+        </p>
+      )}
       {children}
     </fieldset>
+  );
+}
+
+/* A collapsible group, so long secondary lists do not out-shout the
+   controls that actually change the result. */
+function Collapsible({
+  legend,
+  count,
+  children,
+}: {
+  legend: string;
+  count: number;
+  children: React.ReactNode;
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      className="pt-foot mt-foot"
+      style={{ borderTop: "var(--rule-thin) solid var(--rule-quiet)" }}
+    >
+      <button
+        type="button"
+        onClick={() => setOpen((o: boolean) => !o)}
+        aria-expanded={open}
+        className="flex w-full items-center justify-between gap-palm text-start"
+        style={{ minHeight: "var(--touch-min)" }}
+      >
+        <span className="rubric">
+          {legend}
+          {count > 0 && (
+            <span className="tabular" style={{ color: "var(--lapis)" }}>
+              {" "}
+              {count} chosen
+            </span>
+          )}
+        </span>
+        <span
+          aria-hidden="true"
+          className="tabular"
+          style={{ color: "var(--bronze)", fontSize: "var(--t-record)", lineHeight: 1 }}
+        >
+          {open ? "\u2212" : "+"}
+        </span>
+      </button>
+      {open && <div className="mt-palm">{children}</div>}
+    </div>
   );
 }
 
@@ -75,8 +153,16 @@ export function Filters({
         className="flex items-baseline justify-between gap-palm pb-finger"
         style={{ borderBottom: "var(--rule-mid) solid var(--rule-ink)" }}
       >
-        <h2 style={{ fontSize: "var(--t-record)", fontWeight: 600, margin: 0 }}>
-          Narrow the register
+        <h2
+          style={{
+            fontFamily: "var(--font-record)",
+            fontSize: "var(--t-station)",
+            fontWeight: 600,
+            letterSpacing: "var(--tr-cubit)",
+            margin: 0,
+          }}
+        >
+          Narrow it
         </h2>
       </div>
 
@@ -100,7 +186,7 @@ export function Filters({
       </Fieldset>
 
       <Fieldset legend="Nights">
-        <div className="flex flex-wrap gap-finger">
+        <div className="grid grid-cols-4 gap-finger">
           {[null, 3, 4, 5].map((n) => (
             <label
               key={String(n)}
@@ -115,7 +201,7 @@ export function Filters({
                 className="sr-only peer"
               />
               <span
-                className="inline-flex items-center justify-center px-foot text-fine tabular
+                className="flex items-center justify-center text-fine tabular
                            peer-focus-visible:outline peer-focus-visible:outline-2
                            peer-focus-visible:outline-[var(--lapis)]"
                 style={{
@@ -134,7 +220,11 @@ export function Filters({
         </div>
       </Fieldset>
 
-      <Fieldset legend="Quality floor">
+      <Fieldset
+        legend="Quality floor"
+        emphasis="lead"
+        note="The audited reading, and the only figure here no operator can influence."
+      >
         <div className="grid gap-finger">
           <label className="flex items-center gap-finger cursor-pointer">
             <input
@@ -223,7 +313,7 @@ export function Filters({
         </p>
       </Fieldset>
 
-      <Fieldset legend="Amenities">
+      <Collapsible legend="Amenities" count={value.amenities.length}>
         <div className="grid gap-finger">
           {AMENITIES.map((a) => (
             <label key={a} className="flex items-center gap-finger cursor-pointer">
@@ -237,7 +327,7 @@ export function Filters({
             </label>
           ))}
         </div>
-      </Fieldset>
+      </Collapsible>
 
       <div
         className="mt-foot pt-foot flex items-center justify-between gap-palm flex-wrap"

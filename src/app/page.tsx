@@ -124,15 +124,57 @@ export function FleetMeasure() {
         ))}
       </ol>
 
-      <p className="lede">
-        All {FLEET_TOTAL} vessels are scored by our own auditors, drawing on{" "}
-        {REVIEW_TOTAL.toLocaleString("en-GB")} guest reviews averaging{" "}
-        {FLEET_AVERAGE_RATING.toFixed(1)} out of 5.{" "}
-        <strong>
-          Operators cannot influence their score, submit it, or pay to change
-          it.
-        </strong>
-      </p>
+      {/* The attestation: the trust claim as a ruled colophon, because
+          in this world a figure is the argument and a paragraph is not. */}
+      <section className="attest" aria-labelledby="attest-heading">
+        <h2 id="attest-heading" className="sr-only">
+          How this register is compiled
+        </h2>
+
+        <dl className="attest__figures">
+          <div className="attest__figure">
+            <dt className="sr-only">Vessels audited</dt>
+            <dd className="m-0">
+              <span className="attest__n">{FLEET_TOTAL}</span>
+              <span className="attest__label">
+                vessels audited in person, not by questionnaire
+              </span>
+            </dd>
+          </div>
+
+          <div className="attest__figure">
+            <dt className="sr-only">Guest reviews read</dt>
+            <dd className="m-0">
+              <span className="attest__n">
+                {REVIEW_TOTAL.toLocaleString("en-GB")}
+              </span>
+              <span className="attest__label">
+                guest reviews read as evidence alongside each inspection
+              </span>
+            </dd>
+          </div>
+
+          <div className="attest__figure">
+            <dt className="sr-only">Average guest rating</dt>
+            <dd className="m-0">
+              <span className="attest__n">
+                {FLEET_AVERAGE_RATING.toFixed(1)}
+                <span className="attest__unit">of 5</span>
+              </span>
+              <span className="attest__label">
+                the fleet&rsquo;s average guest rating, which does not set the
+                score
+              </span>
+            </dd>
+          </div>
+        </dl>
+
+        <ul className="attest__refusals">
+          <li><span>Operators do not submit their own scores</span></li>
+          <li><span>No operator sees an audit before it is published</span></li>
+          <li><span>No ranking or placement has ever been for sale</span></li>
+        </ul>
+      </section>
     </section>
   );
 }
@@ -144,9 +186,15 @@ export default function Home() {
     <div className="relative flex-1">
       <Masthead />
 
-      <main className="px-span md:px-reach pb-crest">
-        {/* First viewport: the measure leads. No hero photograph. */}
-        <section className="pt-fathom md:pt-reach">
+      <main className="px-span md:px-reach pb-fathom">
+        {/* The opening: the measure leads, a photograph corroborates.
+            The plate renders only when /public/hero.jpg exists. */}
+        <section className="hero">
+          <div
+            className="hero__plate"
+            style={{ ["--hero-plate" as string]: "url('/hero.jpg')" }}
+            aria-hidden="true"
+          />
           <h1
             style={{
               fontSize: "clamp(2.5rem, 7vw, var(--t-flood))",
@@ -261,7 +309,7 @@ export default function Home() {
             Every row is one audited vessel. The reading leads because it is
             the only figure here that no operator can influence.
           </p>
-          <div className="mt-fathom" />
+          <div className="mt-foot" />
           {FLEET.map((v) => (
             <Record key={v.slug} vessel={v} />
           ))}
@@ -288,7 +336,7 @@ export default function Home() {
             Five dimensions, weighted to a hundred points. This is{" "}
             {lead.name}, audited on the {lead.route} run.
           </p>
-          <div className="mt-fathom" />
+          <div className="mt-foot" />
 
           <div className="grid gap-fathom lg:grid-cols-[minmax(0,42rem)_minmax(0,22rem)] items-start">
             <ScoreBreakdown vessel={lead} />
@@ -297,8 +345,11 @@ export default function Home() {
               className="pt-foot lg:pt-0 lg:ps-fathom"
               style={{ borderTop: "var(--rule-thin) solid var(--rule-quiet)" }}
             >
-              <h3 className="rubric mb-palm">Why the weights differ</h3>
-              <p className="pull">
+              {/* Sits on the same baseline as the table's column heads,
+                  so the two columns start together rather than the aside
+                  floating in the middle of its own space. */}
+              <h3 className="rubric m-0 pb-finger">Why the weights differ</h3>
+              <p className="pull mt-palm">
                 A crew&rsquo;s conduct is worth three times an
                 operator&rsquo;s paperwork.
               </p>

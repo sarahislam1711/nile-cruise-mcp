@@ -119,7 +119,7 @@ export default function BidsPage() {
     return (
       <div className="relative flex-1 flex flex-col">
         <Masthead />
-        <main className="px-span md:px-reach pb-crest flex-1 pt-fathom">
+        <main className="px-span md:px-reach pb-fathom flex-1 pt-fathom">
           <p className="rubric" style={{ color: "var(--reed)" }}>Bid accepted</p>
           <h1
             style={{
@@ -167,19 +167,12 @@ export default function BidsPage() {
     <div className="relative flex-1 flex flex-col">
       <Masthead />
 
-      <main className="px-span md:px-reach pb-crest flex-1">
-        <div className="pt-fathom">
-          <h1
-            style={{
-              fontSize: "clamp(2rem, 5vw, var(--t-station))",
-              fontWeight: 600,
-              lineHeight: "var(--lh-record)",
-              margin: 0,
-            }}
-          >
+      <main className="px-span md:px-reach pb-fathom flex-1">
+        <div className="pt-cubit">
+          <h1 className="station__title" style={{ fontSize: "clamp(2.25rem, 5.5vw, var(--t-flood))" }}>
             Bids against your terms
           </h1>
-          <p className="text-fine text-ink-secondary mt-hair mb-0">
+          <p className="lede">
             Request {REQUEST.reference} &middot; expires in{" "}
             {REQUEST.expiresInDays} days &middot; you are still anonymous
           </p>
@@ -209,7 +202,15 @@ export default function BidsPage() {
           className="mt-fathom flex items-end justify-between gap-foot flex-wrap pb-finger"
           style={{ borderBottom: "var(--rule-crest) solid var(--rule-ink)" }}
         >
-          <h2 style={{ fontSize: "var(--t-record)", fontWeight: 600, margin: 0 }}>
+          <h2
+            style={{
+              fontFamily: "var(--font-record)",
+              fontSize: "var(--t-station)",
+              fontWeight: 600,
+              letterSpacing: "var(--tr-cubit)",
+              margin: 0,
+            }}
+          >
             {BIDS.length} operators replied
           </h2>
           <div className="flex items-center gap-finger">

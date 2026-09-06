@@ -19,8 +19,8 @@ export default function RequestStatusPage() {
     <div className="relative flex-1 flex flex-col">
       <Masthead />
 
-      <main className="px-span md:px-reach pb-crest flex-1">
-        <div className="pt-fathom">
+      <main className="px-span md:px-reach pb-fathom flex-1">
+        <div className="pt-cubit">
           <p className="rubric" style={{ color: waiting ? "var(--bronze)" : "var(--reed)" }}>
             {waiting ? "Posted and live" : `${demoBids} bids received`}
           </p>

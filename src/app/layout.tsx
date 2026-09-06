@@ -53,7 +53,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to the register
         </a>
         {children}
-        <Assistant />
         <MobileNav />
       </body>
     </html>
