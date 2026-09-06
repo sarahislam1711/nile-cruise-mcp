@@ -34,15 +34,17 @@ Success: a traveler books with confidence about what they are getting, and can a
 
 The independently audited **5-dimension quality score** is the mechanism a competitor cannot truthfully copy without doing the audit work.
 
-Every vessel is scored to 100 points across five weighted dimensions:
+Every vessel is scored to 100 points across seven weighted dimensions:
 
-| Dimension | Max | Covers |
+| Dimension | Weight | Covers |
 |---|---|---|
-| Service | 30 | Staff friendliness, responsiveness, problem resolution |
-| Hygiene | 20 | Cabin cleanliness, deck maintenance, food storage, pest control |
-| Food | 20 | Variety, taste, freshness, dietary accommodation |
-| Amenities | 20 | Cabin comfort, AC, entertainment, activities, deck space |
-| Management | 10 | Company reputation, booking reliability, safety record |
+| Service | 20% | Staff warmth, responsiveness, housekeeping, restaurant service |
+| Cabin & vessel | 20% | Cabin comfort, renovation level, noise, AC, bathroom, ship condition |
+| Hygiene | 15% | Cleanliness, bathrooms, linens, public areas, food hygiene |
+| Food | 15% | Quality, variety, freshness, presentation, dietary accommodation |
+| Amenities | 10% | Pool, sundeck, lounge, gym, entertainment, Wi-Fi |
+| Management | 10% | Organisation, maintenance response, consistency, professionalism |
+| Cruise experience | 10% | Sailing experience, docking, itinerary execution, crowding and atmosphere |
 
 The weighting is a stated editorial position: crew conduct is worth three times operator paperwork.
 
@@ -95,7 +97,7 @@ Not on hand: photography of the vessels, cabins, and decks. The interface depend
 ## Product Principles
 
 1. **Evidence over adjectives.** Every quality claim traces to an audited dimension or a verified review. Nothing is asserted that cannot be shown.
-2. **Show what differs, not just what ranks.** The five dimensions exist so a traveler can act on their own priorities; collapsing them to one number defeats the product.
+2. **Show what differs, not just what ranks.** The seven dimensions exist so a traveler can act on their own priorities; collapsing them to one number defeats the product.
 3. **The score belongs to the platform.** Independence from operators is what makes it worth trusting, and no surface may imply operator influence over it.
 4. **Anonymity is a promise with a defined end.** The traveler controls identity reveal, and every screen in Path B must make the current privacy state unambiguous.
 5. **Mobile is the real product.** 80% of traffic; a design that only resolves on desktop has failed.

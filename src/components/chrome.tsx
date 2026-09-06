@@ -225,7 +225,7 @@ export function Foot() {
             </p>
             <p className="text-fine text-ink-secondary mt-palm mb-0 max-w-[38ch]">
               An independent register of Nile cruise vessels, audited across
-              five dimensions. We do not own, operate, or sell cabins on any
+              seven dimensions. We do not own, operate, or sell cabins on any
               boat in it.
             </p>
 
@@ -235,7 +235,7 @@ export function Foot() {
               {[
                 [String(FLEET_TOTAL), "vessels"],
                 [REVIEW_TOTAL.toLocaleString("en-GB"), "reviews read"],
-                ["5", "dimensions"],
+                ["7", "dimensions"],
               ].map(([n, label]) => (
                 <div key={label}>
                   <dt className="sr-only">{label}</dt>

@@ -30,16 +30,16 @@ export default function MethodPage() {
           </p>
         </div>
 
-        {/* The five dimensions and their weights */}
+        {/* The seven dimensions and their weights */}
         <section aria-labelledby="dimensions" className="station">
           <div className="station__gradations" aria-hidden="true" />
           <span className="station__plate" aria-hidden="true">I</span>
           <h2 id="dimensions" className="station__title mt-palm">
-            Five dimensions, {weightTotal} points
+            Seven dimensions, {weightTotal} points
           </h2>
 
-          {/* The weights, drawn at the scale's own pitch: thirty points
-              occupies three times the bar that ten does, so the
+          {/* The weights, drawn at the scale's own pitch: a fifth
+              occupies twice the bar that a tenth does, so the
               weighting is visible rather than merely stated. */}
           <ol className="weights mt-foot max-w-[58rem]">
             {DIMENSIONS.map((d) => (
@@ -77,9 +77,10 @@ export default function MethodPage() {
           </ol>
 
           <p className="mt-foot text-ink-secondary max-w-[58ch]">
-            Service is worth thirty and management ten. That is a judgement, not
-            a neutral fact: it says the crew&rsquo;s conduct matters three times
-            more than an operator&rsquo;s paperwork. The weights are published
+            Service and the cabin carry a fifth each; management carries a
+            tenth. That is a judgement, not a neutral fact: it says how a crew
+            treats you and what you sleep in matter twice what an
+            operator&rsquo;s paperwork does. The weights are published
             precisely so you can disagree with them and read the dimensions
             yourself.
           </p>

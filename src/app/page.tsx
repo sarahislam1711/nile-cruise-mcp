@@ -9,7 +9,7 @@ import {
   FLEET_AVERAGE_RATING,
   VESSEL_POSITIONS,
 } from "@/lib/fleet";
-import { BandMark, ScoreBreakdown, BandKeyList } from "@/components/score";
+import { BandMark, BandLabel, ScoreBreakdown, BandKeyList } from "@/components/score";
 import { Masthead, SectionHead, Record, Foot, SampleNote } from "@/components/chrome";
 
 /* ---------- The graduated measure: the fleet on one scale ----------
@@ -212,7 +212,7 @@ export default function Home() {
           >
             The Nile has been gauged and published every year for five thousand
             years. This is the fleet&rsquo;s reckoning: every boat audited
-            across five dimensions, set on one scale, so you can see what
+            across seven dimensions, set on one scale, so you can see what
             separates them.
           </p>
 
@@ -333,9 +333,42 @@ export default function Home() {
             What a reading is made of
           </h2>
           <p className="station__standfirst">
-            Five dimensions, weighted to a hundred points. This is{" "}
-            {lead.name}, audited on the {lead.route} run.
+            Seven dimensions, weighted to a hundred. Here is what that reads
+            like on one boat.
           </p>
+
+          {/* The subject of the breakdown, named at record scale: the
+              reader should never have to work out which vessel these
+              seven bars belong to. */}
+          <div
+            className="mt-foot pt-foot flex flex-wrap items-baseline gap-x-foot gap-y-palm"
+            style={{ borderTop: "var(--rule-mid) solid var(--rule-ink)" }}
+          >
+            <h3
+              className="m-0"
+              style={{
+                fontFamily: "var(--font-record)",
+                fontSize: "clamp(1.75rem, 3.4vw, var(--t-cubit))",
+                fontWeight: 600,
+                letterSpacing: "var(--tr-crest)",
+                lineHeight: 1.05,
+              }}
+            >
+              <Link
+                href={`/vessel/${lead.slug}`}
+                className="no-underline hover:underline"
+                style={{ color: "var(--ink)" }}
+              >
+                {lead.name}
+              </Link>
+            </h3>
+            <span className="flex items-baseline gap-palm">
+              <BandLabel band={lead.band} />
+              <span className="text-fine text-ink-secondary">
+                {lead.route} &middot; {lead.nights} nights
+              </span>
+            </span>
+          </div>
           <div className="mt-foot" />
 
           <div className="grid gap-fathom lg:grid-cols-[minmax(0,42rem)_minmax(0,22rem)] items-start">
@@ -352,13 +385,13 @@ export default function Home() {
                 Why the weights differ
               </h3>
               <p className="pull mt-palm">
-                A crew&rsquo;s conduct is worth three times an
-                operator&rsquo;s paperwork.
+                What you sleep in and who looks after you outweigh everything
+                else.
               </p>
               <p className="marginal">
-                Service carries thirty points and management ten. That is a
-                judgement rather than a neutral fact, and it is published so
-                you can disagree with it.
+                Service and the cabin carry twenty per cent each, management
+                ten. That is a judgement rather than a neutral fact, and it is
+                published so you can disagree with it.
               </p>
 
               <h3 className="rubric mb-palm mt-fathom">What a reading is worth</h3>

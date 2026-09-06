@@ -29,11 +29,12 @@ Requires Node 18+.
 |---|---|
 | `/` | The graduated measure — all 79 vessels on one scale — plus search and the fleet |
 | `/search` | The register, with working filters and sorting |
-| `/vessel/[slug]` | One vessel: five-dimension score, particulars, cabins, reviews, operator |
+| `/vessel/[slug]` | One vessel: seven-dimension score, best-for labels, cabins, reviews, operator |
 | `/method` | How the audit works and why operators cannot influence it |
 | `/request` | Three-step anonymous request wizard |
 | `/request/[ref]` | A live request: waiting for bids, then bids received |
 | `/bids` | Bid comparison, anonymous messaging, acceptance |
+| `/compare` | Vessels held side by side, ordered by what separates them |
 | `/account` | Booked voyages, watched vessels, saved searches |
 
 Two global components sit on every page: the reading assistant (a five-question
@@ -44,15 +45,25 @@ bids sort, totals compute. All of it runs in React state.
 
 ## The quality score
 
-Every vessel is scored to 100 points across five weighted dimensions:
+Every vessel is scored to 100 points across seven weighted dimensions:
 
-| Dimension | Max | Covers |
+| Dimension | Weight | Covers |
 |---|---|---|
-| Service | 30 | Staff friendliness, responsiveness, problem resolution |
-| Hygiene | 20 | Cabin cleanliness, deck maintenance, food storage, pest control |
-| Food | 20 | Variety, taste, freshness, dietary accommodation |
-| Amenities | 20 | Cabin comfort, AC, entertainment, activities, deck space |
-| Management | 10 | Company reputation, booking reliability, safety record |
+| Service | 20% | Staff warmth, responsiveness, housekeeping, restaurant service |
+| Cabin & vessel | 20% | Cabin comfort, renovation level, noise, AC, bathroom, ship condition |
+| Hygiene | 15% | Cleanliness, bathrooms, linens, public areas, food hygiene |
+| Food | 15% | Quality, variety, freshness, presentation, dietary accommodation |
+| Amenities | 10% | Pool, sundeck, lounge, gym, entertainment, Wi-Fi |
+| Management | 10% | Organisation, maintenance response, consistency, professionalism |
+| Cruise experience | 10% | Sailing experience, docking, itinerary execution, crowding and atmosphere |
+
+Each dimension is scored 0–100 and weighted into the published total.
+
+Alongside the score, every vessel carries **best-for labels** derived from those
+dimensions — best food, quietest, best cabins, families, couples, best value,
+traditional character, contemporary. Each is computed from a measurement rather
+than assigned, so no operator can influence one, and a traveller learns more
+from "best food, quietest" than from 84 against 81.
 
 Totals fall into five bands whose ranges reflect real clustering in the fleet —
 the gaps between them are genuine, not rounded cut-offs:

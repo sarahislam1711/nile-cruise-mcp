@@ -118,9 +118,9 @@ export default async function VesselPage({
             The reading
           </h2>
           <p className="text-fine text-ink-secondary mt-hair mb-foot max-w-[56ch]">
-            Five dimensions, weighted to a hundred points. {band.name} covers{" "}
-            {band.min.toFixed(2)} to {band.max.toFixed(2)}, and{" "}
-            {vessel.name} sits at {vessel.total.toFixed(2)}.
+            Seven dimensions, weighted to a hundred. {vessel.name} reads{" "}
+            {vessel.total.toFixed(2)}, which places it in {band.name} &mdash;
+            the band running {band.min.toFixed(2)} to {band.max.toFixed(2)}.
           </p>
 
           <div className="grid gap-fathom lg:grid-cols-[minmax(0,42rem)_minmax(0,20rem)] items-start">

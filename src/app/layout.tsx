@@ -39,7 +39,7 @@ const naskh = Noto_Naskh_Arabic({
 export const metadata: Metadata = {
   title: "Nile Cruise MCP — The Fleet Almanac",
   description:
-    "79 Nile cruise vessels, independently audited across five dimensions. Compare on evidence, not on reviews.",
+    "79 Nile cruise vessels, independently audited across seven dimensions. Compare on evidence, not on reviews.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
