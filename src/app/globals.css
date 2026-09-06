@@ -1329,4 +1329,80 @@ input, select, textarea, button { font: inherit; color: inherit; }
   .bestfor--evidenced > li { grid-template-columns: 1fr; gap: var(--m-hair); }
 }
 
+
+/* ============================================================
+   TERMS PLATES
+
+   Three statements read across rather than down. Each is a
+   stamped plate in the register's language: a bronze gradation
+   above, the claim in the record face, the explanation beneath.
+
+   The row shares one ruled frame so it reads as a single
+   instrument, not three cards sitting near each other. Cards
+   are the lazy container; a ruled plate is this world's.
+   ============================================================ */
+
+.terms {
+  list-style: none;
+  margin: var(--m-foot) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: var(--rule-mid) solid var(--rule-ink);
+  border-bottom: var(--rule-thin) solid var(--rule-plain);
+}
+
+.terms > li {
+  padding: var(--m-foot) var(--m-foot) var(--m-foot) 0;
+  border-inline-end: var(--rule-hair) solid var(--rule-plain);
+}
+.terms > li:last-child {
+  border-inline-end: 0;
+  padding-inline-end: 0;
+}
+.terms > li:not(:first-child) {
+  padding-inline-start: var(--m-foot);
+}
+
+/* The gradation mark: the almanac stamps a thing rather than
+   bulleting it. */
+.terms__mark {
+  display: block;
+  width: var(--m-cubit);
+  height: var(--rule-heavy);
+  background: var(--bronze);
+  margin-bottom: var(--m-palm);
+}
+
+.terms__title {
+  display: block;
+  font-family: var(--font-record);
+  font-size: var(--t-record);
+  font-weight: 600;
+  line-height: var(--lh-record);
+  letter-spacing: var(--tr-cubit);
+  color: var(--ink);
+  margin: 0 0 var(--m-finger);
+  text-wrap: balance;
+}
+
+.terms__body {
+  font-size: var(--t-fine);
+  line-height: var(--lh-body);
+  color: var(--ink-secondary);
+  margin: 0;
+  max-width: 34ch;
+}
+
+@media (max-width: 52rem) {
+  .terms { grid-template-columns: 1fr; border-bottom: 0; }
+  .terms > li {
+    border-inline-end: 0;
+    border-bottom: var(--rule-hair) solid var(--rule-quiet);
+    padding: var(--m-foot) 0;
+  }
+  .terms > li:last-child { border-bottom: 0; padding-bottom: 0; }
+  .terms > li:not(:first-child) { padding-inline-start: 0; }
+}
+
 }

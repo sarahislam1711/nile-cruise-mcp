@@ -420,21 +420,30 @@ export default function Home() {
             the same scale you have just read.
           </p>
 
-          <ul className="noted">
+          <ul className="terms">
             <li>
-              <strong>You stay anonymous</strong>
-              Operators see your dates, budget, and quality floor. They do not
-              see you.
+              <span className="terms__mark" aria-hidden="true" />
+              <h3 className="terms__title">You stay anonymous</h3>
+              <p className="terms__body">
+                Operators see your dates, budget, and quality floor. They do
+                not see you.
+              </p>
             </li>
             <li>
-              <strong>Bids are comparable</strong>
-              Every bid carries its vessel&rsquo;s audited reading, so a lower
-              price and a lower standard cannot be confused.
+              <span className="terms__mark" aria-hidden="true" />
+              <h3 className="terms__title">Bids are comparable</h3>
+              <p className="terms__body">
+                Every bid carries its vessel&rsquo;s audited reading, so a
+                lower price and a lower standard cannot be confused.
+              </p>
             </li>
             <li>
-              <strong>You choose when it ends</strong>
-              Your contact details are shared at the moment you accept, and
-              never before.
+              <span className="terms__mark" aria-hidden="true" />
+              <h3 className="terms__title">You choose when it ends</h3>
+              <p className="terms__body">
+                Your contact details are shared at the moment you accept, and
+                never before.
+              </p>
             </li>
           </ul>
 
