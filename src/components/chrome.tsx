@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Assistant } from "./assistant";
-import { fmtEGP, FLEET_TOTAL, REVIEW_TOTAL, type Vessel } from "@/lib/fleet";
+import { bestForOf, fmtEGP, FLEET_TOTAL, REVIEW_TOTAL, type Vessel } from "@/lib/fleet";
 import { Reading } from "./score";
 import { HoldButton } from "./compare-tray";
 
@@ -120,6 +120,15 @@ export function Record({ vessel }: { vessel: Vessel }) {
         <p className="text-fine text-ink-secondary mt-hair mb-0">
           {vessel.route} &middot; {vessel.nights} nights &middot; {vessel.operator}
         </p>
+        {bestForOf(vessel).length > 0 && (
+          <ul className="bestfor mt-palm">
+            {bestForOf(vessel).slice(0, 3).map((b) => (
+              <li key={b.label} title={b.because}>
+                {b.label}
+              </li>
+            ))}
+          </ul>
+        )}
         <dl className="flex flex-wrap gap-x-foot gap-y-hair mt-finger mb-0 text-micro text-ink-tertiary tabular">
           <div className="flex gap-hair">
             <dt className="sr-only">Built</dt>

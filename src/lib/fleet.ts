@@ -31,32 +31,44 @@ export const DIMENSIONS = [
   {
     key: "service",
     label: "Service",
-    max: 30,
-    note: "Staff friendliness, responsiveness, problem resolution",
+    weight: 20,
+    note: "Staff warmth, responsiveness, housekeeping, restaurant service",
+  },
+  {
+    key: "cabin",
+    label: "Cabin & vessel",
+    weight: 20,
+    note: "Cabin comfort, renovation level, noise, AC, bathroom, ship condition",
   },
   {
     key: "hygiene",
     label: "Hygiene",
-    max: 20,
-    note: "Cabin cleanliness, deck maintenance, food storage, pest control",
+    weight: 15,
+    note: "Cleanliness, bathrooms, linens, public areas, food hygiene",
   },
   {
     key: "food",
     label: "Food",
-    max: 20,
-    note: "Variety, taste, freshness, dietary accommodation",
+    weight: 15,
+    note: "Quality, variety, freshness, presentation, dietary accommodation",
   },
   {
     key: "amenities",
     label: "Amenities",
-    max: 20,
-    note: "Cabin comfort, AC, entertainment, activities, deck space",
+    weight: 10,
+    note: "Pool, sundeck, lounge, gym, entertainment, Wi-Fi",
   },
   {
     key: "management",
     label: "Management",
-    max: 10,
-    note: "Company reputation, booking reliability, safety record",
+    weight: 10,
+    note: "Organisation, maintenance response, consistency, professionalism",
+  },
+  {
+    key: "experience",
+    label: "Cruise experience",
+    weight: 10,
+    note: "Sailing experience, docking, itinerary execution, crowding and atmosphere",
   },
 ] as const;
 
@@ -148,8 +160,8 @@ export const FLEET: Vessel[] = [
     capacity: 80,
     cabinCount: 40,
     band: "luxury",
-    total: 93.45,
-    scores: { service: 28, hygiene: 19, food: 19, amenities: 18, management: 9 },
+    total: 93.1,
+    scores: { service: 93, cabin: 92, hygiene: 95, food: 95, amenities: 90, management: 90, experience: 96 },
     price: 2950,
     reviews: 342,
     rating: 4.8,
@@ -187,8 +199,8 @@ export const FLEET: Vessel[] = [
     capacity: 8,
     cabinCount: 4,
     band: "luxury",
-    total: 96.1,
-    scores: { service: 29, hygiene: 20, food: 20, amenities: 18, management: 9 },
+    total: 96.5,
+    scores: { service: 97, cabin: 96, hygiene: 100, food: 100, amenities: 90, management: 90, experience: 99 },
     price: 6500,
     reviews: 74,
     rating: 4.9,
@@ -221,8 +233,8 @@ export const FLEET: Vessel[] = [
     capacity: 108,
     cabinCount: 54,
     band: "deluxe",
-    total: 88.2,
-    scores: { service: 26, hygiene: 18, food: 18, amenities: 17, management: 9 },
+    total: 88.3,
+    scores: { service: 87, cabin: 88, hygiene: 90, food: 90, amenities: 85, management: 90, experience: 88 },
     price: 4200,
     reviews: 218,
     rating: 4.5,
@@ -254,8 +266,8 @@ export const FLEET: Vessel[] = [
     capacity: 62,
     cabinCount: 31,
     band: "superior",
-    total: 79.3,
-    scores: { service: 23, hygiene: 16, food: 16, amenities: 16, management: 8 },
+    total: 78.9,
+    scores: { service: 77, cabin: 78, hygiene: 80, food: 80, amenities: 80, management: 80, experience: 79 },
     price: 2800,
     reviews: 156,
     rating: 4.4,
@@ -286,8 +298,8 @@ export const FLEET: Vessel[] = [
     capacity: 130,
     cabinCount: 65,
     band: "standard",
-    total: 71.8,
-    scores: { service: 21, hygiene: 14, food: 14, amenities: 15, management: 7 },
+    total: 71.1,
+    scores: { service: 70, cabin: 70, hygiene: 70, food: 70, amenities: 75, management: 70, experience: 76 },
     price: 2400,
     reviews: 89,
     rating: 4.0,
@@ -313,6 +325,76 @@ export const REVIEW_TOTAL = 2340;
 export const FLEET_AVERAGE_RATING = 4.2;
 
 export const bandOf = (key: BandKey) => BANDS.find((b) => b.key === key)!;
+
+/* ------------------------------------------------------------
+   "Best for" labels.
+
+   Derived from the audited dimensions, never assigned by an
+   operator — the same independence that makes the score worth
+   reading. A traveller learns more from "best food, quietest"
+   than from 84 against 81, and two vessels three points apart
+   are not meaningfully different on the total alone.
+
+   Each rule states the evidence it reads, so a label can always
+   be traced back to a measurement.
+   ------------------------------------------------------------ */
+
+export interface BestFor {
+  label: string;
+  /** The measurement this label was derived from. */
+  because: string;
+}
+
+export function bestForOf(v: Vessel): BestFor[] {
+  const out: BestFor[] = [];
+  const s = v.scores;
+
+  if (s.food >= 92)
+    out.push({ label: "Best food", because: `Food scores ${s.food}` });
+
+  if (v.capacity <= 20)
+    out.push({ label: "Quietest", because: `Only ${v.capacity} guests aboard` });
+
+  if (s.cabin >= 92)
+    out.push({ label: "Best cabins", because: `Cabin and vessel scores ${s.cabin}` });
+
+  if (s.service >= 90 && v.rating >= 4.6)
+    out.push({
+      label: "First-time visitors",
+      because: `Service ${s.service} with a ${v.rating.toFixed(1)} guest rating`,
+    });
+
+  if (v.amenities.includes("Swimming pool") && v.capacity >= 60)
+    out.push({ label: "Families", because: "Pool and deck space for a full boat" });
+
+  if (v.capacity <= 40 && s.experience >= 90)
+    out.push({
+      label: "Couples",
+      because: `A small boat scoring ${s.experience} on the sailing itself`,
+    });
+
+  if (v.total >= 92 && v.price >= 5000)
+    out.push({ label: "Luxury travellers", because: "Top band, priced accordingly" });
+
+  /* Value is points per thousand EGP: the reading you get for what
+     you pay, which is the comparison a price-led traveller makes. */
+  if (v.total / (v.price / 1000) >= 28)
+    out.push({
+      label: "Best value",
+      because: `${v.total.toFixed(1)} points at ${fmtEGP(v.price)} EGP`,
+    });
+
+  if (v.built <= 2008 && s.cabin >= 75)
+    out.push({
+      label: "Traditional character",
+      because: `Built ${v.built} and still scoring ${s.cabin} on condition`,
+    });
+
+  if (v.built >= 2015)
+    out.push({ label: "Contemporary", because: `Built ${v.built}` });
+
+  return out;
+}
 
 export const vesselBySlug = (slug: string) =>
   FLEET.find((v) => v.slug === slug);

@@ -11,7 +11,7 @@ export const metadata = {
 };
 
 export default function MethodPage() {
-  const weightTotal = DIMENSIONS.reduce((n, d) => n + d.max, 0);
+  const weightTotal = DIMENSIONS.reduce((n, d) => n + d.weight, 0);
 
   return (
     <div className="relative flex-1 flex flex-col">
@@ -51,20 +51,20 @@ export default function MethodPage() {
                 <div
                   className="weight__bar"
                   role="img"
-                  aria-label={`${d.label} carries ${d.max} of ${weightTotal} points`}
+                  aria-label={`${d.label} carries ${d.weight} of ${weightTotal} points`}
                 >
                   <div
                     className="weight__fill rise"
                     style={
                       {
-                        "--w": `${(d.max / weightTotal) * 100}%`,
+                        "--w": `${d.weight}%`,
                         "--rise-from": 0,
                       } as CSSProperties
                     }
                   />
                 </div>
                 <span className="weight__n tabular" aria-hidden="true">
-                  {d.max}
+                  {d.weight}
                 </span>
               </li>
             ))}

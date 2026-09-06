@@ -58,7 +58,7 @@ export default function ComparePage() {
   /* Ordered so the dimensions that separate these vessels are read
      first: a comparison's job is to surface what differs. */
   const ordered = [...DIMENSIONS].sort(
-    (a, b) => spread(vessels, b.key) / b.max - spread(vessels, a.key) / a.max
+    (a, b) => spread(vessels, b.key) / b.weight - spread(vessels, a.key) / a.weight
   );
   const widest = Math.max(...DIMENSIONS.map((d) => spread(vessels, d.key)));
   const anyDifference = widest > 0;
@@ -175,7 +175,7 @@ export default function ComparePage() {
                       ) : (
                         <>{diff} apart</>
                       )}
-                      <span className="tabular"> &middot; max {d.max}</span>
+                      <span className="tabular"> &middot; weight {d.weight}%</span>
                     </p>
                   </div>
 
@@ -197,7 +197,7 @@ export default function ComparePage() {
                             {got}
                           </span>
                           <span className="text-micro text-ink-tertiary tabular">
-                            /{d.max}
+                            %
                           </span>
                           {leads && (
                             <span
@@ -217,7 +217,7 @@ export default function ComparePage() {
                             className={`band-${v.band} absolute inset-y-0 start-0 overflow-hidden rise`}
                             style={
                               {
-                                width: `${(got / d.max) * 100}%`,
+                                width: `${got}%`,
                                 "--rise-from": 0,
                               } as CSSProperties
                             }

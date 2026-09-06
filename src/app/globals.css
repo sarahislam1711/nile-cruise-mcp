@@ -1263,4 +1263,70 @@ input, select, textarea, button { font: inherit; color: inherit; }
   .weight__bar { grid-column: 1 / -1; }
 }
 
+
+/* ============================================================
+   BEST-FOR LABELS
+
+   What a vessel is actually good at, which is more use to a
+   traveller than the difference between 84 and 81. Derived from
+   the audited dimensions, so each one traces to a measurement.
+
+   Set as stamped plates in the record face — the almanac marks
+   a thing by stamping it, not by tinting it.
+   ============================================================ */
+
+.bestfor {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--m-finger);
+}
+
+.bestfor > li {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--m-finger);
+  padding: var(--m-hair) var(--m-palm);
+  border: var(--rule-thin) solid var(--bronze);
+  border-radius: var(--radius-control);
+  background: var(--bronze-wash);
+  font-family: var(--font-record);
+  font-size: var(--t-fine);
+  font-weight: 600;
+  letter-spacing: var(--tr-cubit);
+  color: var(--bronze-deep);
+}
+
+/* On a detail surface the evidence rides with the label, because
+   a claim the reader cannot trace is just a badge. */
+.bestfor--evidenced {
+  display: grid;
+  gap: 0;
+}
+.bestfor--evidenced > li {
+  display: grid;
+  grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
+  gap: var(--m-foot);
+  align-items: baseline;
+  border: 0;
+  border-top: var(--rule-hair) solid var(--rule-quiet);
+  border-radius: 0;
+  background: none;
+  padding: var(--m-palm) 0;
+  color: var(--ink);
+}
+.bestfor--evidenced .bestfor__why {
+  font-family: var(--font-text);
+  font-size: var(--t-fine);
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--ink-secondary);
+}
+
+@media (max-width: 40rem) {
+  .bestfor--evidenced > li { grid-template-columns: 1fr; gap: var(--m-hair); }
+}
+
 }

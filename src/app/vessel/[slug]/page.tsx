@@ -125,18 +125,20 @@ export default async function VesselPage({
 
           <div className="grid gap-fathom lg:grid-cols-[minmax(0,42rem)_minmax(0,20rem)] items-start">
             <ScoreBreakdown vessel={vessel} />
-            <aside
-              className="pt-foot lg:pt-0 lg:ps-fathom"
-              style={{ borderTop: "var(--rule-thin) solid var(--rule-quiet)" }}
-            >
-              <h3 className="rubric mb-palm">What each dimension covers</h3>
+            <aside className="pt-foot lg:pt-0 lg:ps-fathom">
+              <h3
+                className="rubric m-0 pb-finger mb-palm"
+                style={{ borderBottom: "var(--rule-thin) solid var(--rule-quiet)" }}
+              >
+                What each dimension covers
+              </h3>
               <dl className="m-0 text-fine">
                 {DIMENSIONS.map((d) => (
                   <div key={d.key} className="py-finger">
                     <dt className="font-semibold">
                       {d.label}{" "}
                       <span className="text-ink-tertiary tabular font-normal">
-                        max {d.max}
+                        weight {d.weight}%
                       </span>
                     </dt>
                     <dd className="m-0 text-ink-secondary text-micro leading-snug">

@@ -341,14 +341,16 @@ export default function Home() {
           <div className="grid gap-fathom lg:grid-cols-[minmax(0,42rem)_minmax(0,22rem)] items-start">
             <ScoreBreakdown vessel={lead} />
 
-            <aside
-              className="pt-foot lg:pt-0 lg:ps-fathom"
-              style={{ borderTop: "var(--rule-thin) solid var(--rule-quiet)" }}
-            >
-              {/* Sits on the same baseline as the table's column heads,
-                  so the two columns start together rather than the aside
-                  floating in the middle of its own space. */}
-              <h3 className="rubric m-0 pb-finger">Why the weights differ</h3>
+            <aside className="pt-foot lg:pt-0 lg:ps-fathom">
+              {/* The table's head row is a rubric with a rule under it.
+                  The aside opens with the same object so the two columns
+                  begin on one line rather than merely near each other. */}
+              <h3
+                className="rubric m-0 pb-finger"
+                style={{ borderBottom: "var(--rule-thin) solid var(--rule-quiet)" }}
+              >
+                Why the weights differ
+              </h3>
               <p className="pull mt-palm">
                 A crew&rsquo;s conduct is worth three times an
                 operator&rsquo;s paperwork.

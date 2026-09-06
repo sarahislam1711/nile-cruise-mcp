@@ -107,7 +107,7 @@ export function ScoreBreakdown({
       <tbody>
         {DIMENSIONS.map((d, i) => {
           const got = vessel.scores[d.key];
-          const ratio = got / d.max;
+          const ratio = got / 100;
           const riseStyle = {
             width: `${ratio * 100}%`,
             "--rise-delay": `${140 + i * 90}ms`,
@@ -168,7 +168,7 @@ export function ScoreBreakdown({
                 >
                   {got}
                 </span>
-                <span className="text-ink-tertiary text-fine">/{d.max}</span>
+                <span className="text-ink-tertiary text-fine">%</span>
               </td>
             </tr>
           );
