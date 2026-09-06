@@ -16,8 +16,8 @@ export default function MethodPage() {
     <div className="relative flex-1 flex flex-col">
       <Masthead />
 
-      <main className="px-span md:px-reach pb-crest flex-1">
-        <div className="pt-fathom">
+      <main className="px-span md:px-reach pb-fathom flex-1">
+        <div className="pt-cubit">
           <h1 className="station__title">
             How a vessel is measured.
           </h1>
@@ -176,7 +176,7 @@ export default function MethodPage() {
         </section>
 
         <section
-          className="mt-fathom pt-foot"
+          className="mt-cubit pt-foot"
           style={{ borderTop: "var(--rule-crest) solid var(--rule-ink)" }}
         >
           <h2 style={{ fontSize: "var(--t-station)", fontWeight: 600 }}>

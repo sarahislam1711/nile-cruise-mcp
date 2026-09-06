@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Assistant } from "./assistant";
-import { fmtEGP, type Vessel } from "@/lib/fleet";
+import { fmtEGP, FLEET_TOTAL, REVIEW_TOTAL, type Vessel } from "@/lib/fleet";
 import { Reading } from "./score";
 
 /* ------------------------------------------------------------
@@ -189,43 +189,124 @@ export function SampleNote() {
    a crest rule rather than trailing off into blank paper.
    ------------------------------------------------------------ */
 export function Foot() {
+  const year = new Date().getFullYear();
+
   return (
     <>
       <Assistant />
       <footer
-      className="px-span md:px-reach pt-foot pb-fathom mt-auto"
-      style={{ borderTop: "var(--rule-crest) solid var(--rule-ink)" }}
-    >
-      <div className="flex flex-wrap gap-fathom justify-between">
-        <div className="max-w-[38ch]">
-          <p
-            className="font-[family-name:var(--font-record)] m-0"
-            style={{ fontSize: "var(--t-body)", fontWeight: 600, letterSpacing: "0.02em" }}
-          >
-            Nile Cruise MCP
-          </p>
-          <p className="text-fine text-ink-secondary mt-finger mb-0">
-            An independent register of Nile cruise vessels, audited across five
-            dimensions. We do not own, operate, or sell cabins on any boat in
-            this register.
-          </p>
+        className="px-span md:px-reach pt-fathom pb-foot mt-auto"
+        style={{ borderTop: "var(--rule-crest) solid var(--rule-ink)" }}
+      >
+        {/* The colophon: what this register is, in the register's
+            own voice, before the navigation. */}
+        <div className="grid gap-fathom lg:grid-cols-[minmax(0,26rem)_1fr] items-start">
+          <div>
+            <p
+              className="font-[family-name:var(--font-record)] m-0"
+              style={{
+                fontSize: "var(--t-station)",
+                fontWeight: 600,
+                letterSpacing: "var(--tr-cubit)",
+              }}
+            >
+              Nile Cruise MCP
+            </p>
+            <p className="text-fine text-ink-secondary mt-palm mb-0 max-w-[38ch]">
+              An independent register of Nile cruise vessels, audited across
+              five dimensions. We do not own, operate, or sell cabins on any
+              boat in it.
+            </p>
+
+            {/* The standing figures, small — the footer restates the
+                authority the page opened with. */}
+            <dl className="flex flex-wrap gap-x-foot gap-y-palm m-0 mt-foot">
+              {[
+                [String(FLEET_TOTAL), "vessels"],
+                [REVIEW_TOTAL.toLocaleString("en-GB"), "reviews read"],
+                ["5", "dimensions"],
+              ].map(([n, label]) => (
+                <div key={label}>
+                  <dt className="sr-only">{label}</dt>
+                  <dd className="m-0">
+                    <span
+                      className="font-[family-name:var(--font-record)] tabular block"
+                      style={{
+                        fontSize: "var(--t-record)",
+                        fontWeight: 600,
+                        lineHeight: 1,
+                      }}
+                    >
+                      {n}
+                    </span>
+                    <span className="rubric">{label}</span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          {/* Navigation, grouped by what the visitor is trying to do. */}
+          <nav aria-label="Footer" className="grid gap-fathom sm:grid-cols-3">
+            {[
+              {
+                heading: "Read",
+                links: [
+                  ["/search", "The register"],
+                  ["/method", "How the audit works"],
+                  ["/vessel/sonesta-sun-goddess", "A worked example"],
+                ],
+              },
+              {
+                heading: "Ask",
+                links: [
+                  ["/request", "Post a request"],
+                  ["/bids", "Bids you have received"],
+                ],
+              },
+              {
+                heading: "Yours",
+                links: [
+                  ["/account", "Your ledger"],
+                  ["/account", "Watched vessels"],
+                  ["/account", "Saved readings"],
+                ],
+              },
+            ].map((group) => (
+              <div key={group.heading}>
+                <h2
+                  className="rubric m-0 pb-finger"
+                  style={{ borderBottom: "var(--rule-thin) solid var(--rule-plain)" }}
+                >
+                  {group.heading}
+                </h2>
+                <ul className="list-none m-0 mt-palm p-0 grid gap-finger text-fine">
+                  {group.links.map(([href, label]) => (
+                    <li key={label}>
+                      <Link href={href} className="no-underline">
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
         </div>
 
-        <nav aria-label="Footer">
-          <ul className="list-none m-0 p-0 grid gap-finger text-fine">
-            <li><Link href="/search" className="no-underline">The register</Link></li>
-            <li><Link href="/method" className="no-underline">Audit method</Link></li>
-            <li><Link href="/request" className="no-underline">Post a request</Link></li>
-            <li><Link href="/bids" className="no-underline">My bids</Link></li>
-            <li><Link href="/account" className="no-underline">Your ledger</Link></li>
-          </ul>
-        </nav>
-      </div>
-
-      <p className="rubric mt-fathom mb-0">
-        Readings published {new Date().getFullYear()} &middot; Scores are the
-        platform&rsquo;s own and cannot be purchased
-      </p>
+        {/* The imprint line — the almanac's own closing statement. */}
+        <div
+          className="mt-flood pt-foot flex flex-wrap items-baseline justify-between gap-foot"
+          style={{ borderTop: "var(--rule-mid) solid var(--rule-ink)" }}
+        >
+          <p className="rubric m-0">
+            Readings published {year} &middot; Scores are the platform&rsquo;s
+            own and cannot be purchased
+          </p>
+          <p className="rubric m-0" style={{ color: "var(--ink-quiet)" }}>
+            Compiled on the Nile
+          </p>
+        </div>
       </footer>
     </>
   );

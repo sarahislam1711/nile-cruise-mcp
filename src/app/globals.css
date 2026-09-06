@@ -688,12 +688,12 @@ input, select, textarea, button { font: inherit; color: inherit; }
 
 .station {
   position: relative;
-  margin-top: var(--m-flood);
+  margin-top: var(--m-fathom);
   padding-top: var(--m-foot);
   border-top: var(--rule-crest) solid var(--rule-ink);
 }
 .station--minor {
-  margin-top: var(--m-fathom);
+  margin-top: var(--m-cubit);
   border-top-width: var(--rule-mid);
 }
 
@@ -742,7 +742,7 @@ input, select, textarea, button { font: inherit; color: inherit; }
   line-height: var(--lh-body);
   color: var(--ink-secondary);
   max-width: 54ch;
-  margin: var(--m-foot) 0 0;
+  margin: var(--m-palm) 0 0;
 }
 .station--minor .station__standfirst {
   font-size: var(--t-body);
@@ -767,7 +767,7 @@ input, select, textarea, button { font: inherit; color: inherit; }
 /* Rhythm: sections alternate density. A station that follows
    a dense table gets more air above it than one following a
    short passage, so the scroll has a pulse. */
-.station + .station { margin-top: var(--m-crest); }
+.station + .station { margin-top: var(--m-fathom); }
 
 /* ============================================================
    PROSE IN A SCANNING INTERFACE
@@ -931,26 +931,55 @@ input, select, textarea, button { font: inherit; color: inherit; }
 .attest__refusals {
   list-style: none;
   margin: 0;
-  padding: var(--m-foot) 0 var(--m-foot) 0;
+  padding: 0;
   border-top: var(--rule-thin) solid var(--rule-plain);
   display: grid;
-  gap: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
+
+/* Each refusal is a plate: struck rule, the claim in the record
+   face, and the ground sunk slightly so the row reads as three
+   stamped statements rather than three lines of prose. */
 .attest__refusals > li {
-  display: flex;
-  align-items: baseline;
-  gap: var(--m-palm);
-  padding: var(--m-finger) 0;
-  font-size: var(--t-fine);
-  color: var(--ink-secondary);
+  padding: var(--m-foot);
+  border-inline-end: var(--rule-hair) solid var(--rule-plain);
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--silt) 4%, transparent),
+    transparent 70%
+  );
 }
-/* A struck gradation: the mark of a thing ruled out. */
+.attest__refusals > li:last-child { border-inline-end: 0; }
+
+/* The strike: a silt rule, the mark of a thing ruled out. */
 .attest__refusals > li::before {
   content: "";
-  flex: 0 0 var(--m-foot);
-  height: 2px;
+  display: block;
+  width: var(--m-cubit);
+  height: var(--rule-heavy);
   background: var(--silt);
-  transform: translateY(-0.35em);
+  margin-bottom: var(--m-palm);
+}
+
+.attest__refusals > li span {
+  display: block;
+  font-family: var(--font-record);
+  font-size: var(--t-lead);
+  font-weight: 500;
+  line-height: var(--lh-record);
+  letter-spacing: var(--tr-cubit);
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+@media (max-width: 52rem) {
+  .attest__refusals { grid-template-columns: 1fr; }
+  .attest__refusals > li {
+    border-inline-end: 0;
+    border-top: var(--rule-hair) solid var(--rule-quiet);
+    padding-inline: 0;
+  }
+  .attest__refusals > li:first-child { border-top: 0; }
 }
 
 @media (max-width: 40rem) {
@@ -962,6 +991,156 @@ input, select, textarea, button { font: inherit; color: inherit; }
   }
   .attest__figure:first-child { border-top: 0; }
   .attest__figure:not(:first-child) { padding-inline-start: 0; }
+}
+
+
+/* ============================================================
+   FULL-VIEWPORT STATIONS
+
+   Each station holds at least one screen and centres its
+   content, so a section is a place rather than a stretch of
+   scroll. Content taller than the screen grows the section
+   instead of being clipped or trapped in an inner scrollbar —
+   a register has to be able to hold 79 records.
+
+   Scroll snap settles the page on a station rather than
+   halfway between two. It is proximity, not mandatory, so a
+   fast scroll is never fought, and it is off entirely under
+   reduced motion.
+   ============================================================ */
+
+.viewport-flow {
+  scroll-snap-type: y proximity;
+}
+
+.station--screen {
+  min-height: 100vh;
+  min-height: 100svh;   /* the honest height on mobile browsers */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  padding-block: var(--m-flood);
+}
+
+/* The first screen carries the masthead above it, so it owes
+   that height back. */
+.station--screen-first {
+  min-height: calc(100vh - 5rem);
+  min-height: calc(100svh - 5rem);
+  padding-block-start: var(--m-fathom);
+}
+
+/* A station that genuinely exceeds the screen stops centring —
+   centring tall content pushes its own heading off the top. */
+.station--screen > .station__body--tall {
+  margin-block: auto 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viewport-flow { scroll-snap-type: none; }
+}
+
+/* Below the phone's landscape height, one-screen sections trap
+   content. Release them. */
+@media (max-height: 34rem) {
+  .station--screen {
+    min-height: 0;
+    padding-block: var(--m-fathom);
+    scroll-snap-align: none;
+  }
+}
+
+/* A quiet mark that there is more below, on screens that have
+   room for it. Sits inside the station, never fixed. */
+.station__more {
+  margin-top: var(--m-fathom);
+  display: flex;
+  align-items: center;
+  gap: var(--m-palm);
+  font-size: var(--t-micro);
+  font-weight: 600;
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--ink-tertiary);
+}
+.station__more::before {
+  content: "";
+  width: var(--m-cubit);
+  height: var(--rule-mid);
+  background: var(--bronze);
+}
+
+
+/* ============================================================
+   THE HERO PLATE
+
+   A photograph sits behind the opening statement at very low
+   opacity — corroboration, never the argument. The number
+   still leads.
+
+   Three things keep it from becoming a stock-photo hero:
+   the image is desaturated toward the paper's own warmth, it
+   is masked so it fades out before it reaches the text's
+   baseline, and it never darkens contrast below the floor.
+
+   Drop a file at /public/hero.jpg to fill it. With no file the
+   slot renders nothing and the hero is exactly as it was.
+   ============================================================ */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero__plate {
+  position: absolute;
+  inset-block-start: calc(var(--m-fathom) * -1);
+  inset-inline: calc(var(--m-span) * -1);
+  block-size: min(78%, 34rem);
+  z-index: -1;
+  pointer-events: none;
+
+  background-image: var(--hero-plate, none);
+  background-size: cover;
+  background-position: 62% 38%;
+
+  /* Toward the paper's warmth, not toward grey. */
+  filter: saturate(0.34) sepia(0.22) contrast(0.92) brightness(1.06);
+  opacity: 0.16;
+
+  /* Fades out before it reaches the text it sits behind, so
+     nothing is ever read over a busy patch of photograph. */
+  -webkit-mask-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.55) 46%, transparent 92%),
+    linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 78%, transparent 100%);
+  mask-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.55) 46%, transparent 92%),
+    linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 78%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+@media (min-width: 64rem) {
+  .hero__plate {
+    inset-inline: calc(var(--m-reach) * -1);
+    opacity: 0.14;
+  }
+}
+
+/* The paper's tooth still reads over the plate, so the ground
+   stays one material rather than a photo with paper beside it. */
+.hero__plate::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(94, 71, 38, 0.10) 0 1px,
+    transparent 1px 4px
+  );
+  mix-blend-mode: multiply;
 }
 
 }

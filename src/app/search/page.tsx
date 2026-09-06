@@ -53,8 +53,8 @@ export default function SearchPage() {
     <div className="relative flex-1 flex flex-col">
       <Masthead />
 
-      <main className="px-span md:px-reach pb-crest flex-1">
-        <div className="pt-fathom">
+      <main className="px-span md:px-reach pb-fathom flex-1">
+        <div className="pt-cubit">
           <h1
             className="station__title"
             style={{ fontSize: "clamp(2.25rem, 5.5vw, var(--t-flood))" }}
@@ -176,7 +176,7 @@ export default function SearchPage() {
 
                 {/* The register ends on a reckoning, not blank paper. */}
                 <div
-                  className="mt-fathom pt-foot flex flex-wrap items-end justify-between gap-foot"
+                  className="mt-cubit pt-foot flex flex-wrap items-end justify-between gap-foot"
                   style={{ borderTop: "var(--rule-crest) solid var(--rule-ink)" }}
                 >
                   <div>

@@ -30,7 +30,7 @@ export default async function VesselPage({
     <div className="relative flex-1 flex flex-col">
       <Masthead />
 
-      <main className="px-span md:px-reach pb-crest flex-1">
+      <main className="px-span md:px-reach pb-fathom flex-1">
         <nav aria-label="Breadcrumb" className="pt-foot">
           <Link href="/search" className="rubric no-underline">
             &larr; Back to the register

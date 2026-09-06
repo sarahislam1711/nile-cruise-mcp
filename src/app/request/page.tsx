@@ -131,7 +131,7 @@ export default function RequestPage() {
     return (
       <div className="relative flex-1 flex flex-col">
         <Masthead />
-        <main className="px-span md:px-reach pb-crest flex-1 pt-fathom">
+        <main className="px-span md:px-reach pb-fathom flex-1 pt-fathom">
           <p className="rubric" style={{ color: "var(--reed)" }}>
             Request posted
           </p>
@@ -188,7 +188,7 @@ export default function RequestPage() {
     <div className="relative flex-1 flex flex-col">
       <Masthead />
 
-      <main className="px-span md:px-reach pb-crest flex-1">
+      <main className="px-span md:px-reach pb-fathom flex-1">
         <div className="pt-fathom max-w-[46rem]">
           <h1
             style={{
@@ -472,7 +472,7 @@ export default function RequestPage() {
 
           {/* Navigation */}
           <div
-            className="mt-fathom pt-foot flex flex-wrap items-center justify-between gap-palm"
+            className="mt-cubit pt-foot flex flex-wrap items-center justify-between gap-palm"
             style={{ borderTop: "var(--rule-mid) solid var(--rule-ink)" }}
           >
             <button

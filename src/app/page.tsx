@@ -170,9 +170,9 @@ export function FleetMeasure() {
         </dl>
 
         <ul className="attest__refusals">
-          <li>Operators do not submit their own scores</li>
-          <li>Operators cannot see an audit before it is published</li>
-          <li>No placement, ranking, or change has ever been for sale</li>
+          <li><span>Operators do not submit their own scores</span></li>
+          <li><span>No operator sees an audit before it is published</span></li>
+          <li><span>No ranking or placement has ever been for sale</span></li>
         </ul>
       </section>
     </section>
@@ -186,9 +186,15 @@ export default function Home() {
     <div className="relative flex-1">
       <Masthead />
 
-      <main className="px-span md:px-reach pb-crest">
-        {/* First viewport: the measure leads. No hero photograph. */}
-        <section className="pt-fathom md:pt-reach">
+      <main className="px-span md:px-reach pb-fathom">
+        {/* The opening: the measure leads, a photograph corroborates.
+            The plate renders only when /public/hero.jpg exists. */}
+        <section className="hero">
+          <div
+            className="hero__plate"
+            style={{ ["--hero-plate" as string]: "url('/hero.jpg')" }}
+            aria-hidden="true"
+          />
           <h1
             style={{
               fontSize: "clamp(2.5rem, 7vw, var(--t-flood))",
@@ -303,7 +309,7 @@ export default function Home() {
             Every row is one audited vessel. The reading leads because it is
             the only figure here that no operator can influence.
           </p>
-          <div className="mt-fathom" />
+          <div className="mt-foot" />
           {FLEET.map((v) => (
             <Record key={v.slug} vessel={v} />
           ))}
@@ -330,7 +336,7 @@ export default function Home() {
             Five dimensions, weighted to a hundred points. This is{" "}
             {lead.name}, audited on the {lead.route} run.
           </p>
-          <div className="mt-fathom" />
+          <div className="mt-foot" />
 
           <div className="grid gap-fathom lg:grid-cols-[minmax(0,42rem)_minmax(0,22rem)] items-start">
             <ScoreBreakdown vessel={lead} />

@@ -119,7 +119,7 @@ export default function BidsPage() {
     return (
       <div className="relative flex-1 flex flex-col">
         <Masthead />
-        <main className="px-span md:px-reach pb-crest flex-1 pt-fathom">
+        <main className="px-span md:px-reach pb-fathom flex-1 pt-fathom">
           <p className="rubric" style={{ color: "var(--reed)" }}>Bid accepted</p>
           <h1
             style={{
@@ -167,8 +167,8 @@ export default function BidsPage() {
     <div className="relative flex-1 flex flex-col">
       <Masthead />
 
-      <main className="px-span md:px-reach pb-crest flex-1">
-        <div className="pt-fathom">
+      <main className="px-span md:px-reach pb-fathom flex-1">
+        <div className="pt-cubit">
           <h1 className="station__title" style={{ fontSize: "clamp(2.25rem, 5.5vw, var(--t-flood))" }}>
             Bids against your terms
           </h1>
