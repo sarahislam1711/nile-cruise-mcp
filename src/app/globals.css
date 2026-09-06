@@ -856,4 +856,112 @@ input, select, textarea, button { font: inherit; color: inherit; }
   text-wrap: balance;
 }
 
+
+/* ============================================================
+   THE ATTESTATION
+
+   An almanac states its authority in a ruled colophon: who
+   measured, from what evidence, and what they will not do.
+   The figures are set at cubit scale in the record face,
+   because in this world a number is the argument.
+
+   Used once per surface. It stops being an attestation if it
+   repeats.
+   ============================================================ */
+
+.attest {
+  margin-top: var(--m-fathom);
+  border-top: var(--rule-crest) solid var(--rule-ink);
+  border-bottom: var(--rule-mid) solid var(--rule-ink);
+}
+
+/* The figures, read across as a ruled row of stations. */
+.attest__figures {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+}
+.attest__figure {
+  padding: var(--m-foot) var(--m-foot) var(--m-foot) 0;
+  border-inline-end: var(--rule-hair) solid var(--rule-plain);
+}
+.attest__figure:last-child {
+  border-inline-end: 0;
+  padding-inline-end: 0;
+}
+.attest__figure:not(:first-child) {
+  padding-inline-start: var(--m-foot);
+}
+
+/* The numeral carries the claim. */
+.attest__n {
+  display: block;
+  font-family: var(--font-record);
+  /* Sized to the widest figure in the row, not to the narrowest:
+     a four-digit count and a two-digit count cannot share one size
+     without either clipping or looking timid. */
+  font-size: clamp(1.75rem, 3.6vw, var(--t-cubit));
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: var(--tr-crest);
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--ink);
+}
+/* A unit rides small beside the numeral, never at its size. */
+.attest__unit {
+  font-size: 0.34em;
+  font-weight: 500;
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--ink-tertiary);
+  margin-inline-start: 0.2em;
+  vertical-align: 0.6em;
+}
+.attest__label {
+  display: block;
+  margin-top: var(--m-palm);
+  font-size: var(--t-fine);
+  color: var(--ink-secondary);
+  max-width: 24ch;
+}
+
+/* The refusals: what the platform will not do, set as a ruled
+   list. Negative space is the point — three short lines carry
+   more weight than a sentence containing the same three facts. */
+.attest__refusals {
+  list-style: none;
+  margin: 0;
+  padding: var(--m-foot) 0 var(--m-foot) 0;
+  border-top: var(--rule-thin) solid var(--rule-plain);
+  display: grid;
+  gap: 0;
+}
+.attest__refusals > li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--m-palm);
+  padding: var(--m-finger) 0;
+  font-size: var(--t-fine);
+  color: var(--ink-secondary);
+}
+/* A struck gradation: the mark of a thing ruled out. */
+.attest__refusals > li::before {
+  content: "";
+  flex: 0 0 var(--m-foot);
+  height: 2px;
+  background: var(--silt);
+  transform: translateY(-0.35em);
+}
+
+@media (max-width: 40rem) {
+  .attest__figures { grid-template-columns: 1fr; }
+  .attest__figure {
+    border-inline-end: 0;
+    border-top: var(--rule-hair) solid var(--rule-plain);
+    padding: var(--m-foot) 0;
+  }
+  .attest__figure:first-child { border-top: 0; }
+  .attest__figure:not(:first-child) { padding-inline-start: 0; }
+}
+
 }

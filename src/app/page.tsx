@@ -124,15 +124,57 @@ export function FleetMeasure() {
         ))}
       </ol>
 
-      <p className="lede">
-        All {FLEET_TOTAL} vessels are scored by our own auditors, drawing on{" "}
-        {REVIEW_TOTAL.toLocaleString("en-GB")} guest reviews averaging{" "}
-        {FLEET_AVERAGE_RATING.toFixed(1)} out of 5.{" "}
-        <strong>
-          Operators cannot influence their score, submit it, or pay to change
-          it.
-        </strong>
-      </p>
+      {/* The attestation: the trust claim as a ruled colophon, because
+          in this world a figure is the argument and a paragraph is not. */}
+      <section className="attest" aria-labelledby="attest-heading">
+        <h2 id="attest-heading" className="sr-only">
+          How this register is compiled
+        </h2>
+
+        <dl className="attest__figures">
+          <div className="attest__figure">
+            <dt className="sr-only">Vessels audited</dt>
+            <dd className="m-0">
+              <span className="attest__n">{FLEET_TOTAL}</span>
+              <span className="attest__label">
+                vessels audited in person, not by questionnaire
+              </span>
+            </dd>
+          </div>
+
+          <div className="attest__figure">
+            <dt className="sr-only">Guest reviews read</dt>
+            <dd className="m-0">
+              <span className="attest__n">
+                {REVIEW_TOTAL.toLocaleString("en-GB")}
+              </span>
+              <span className="attest__label">
+                guest reviews read as evidence alongside each inspection
+              </span>
+            </dd>
+          </div>
+
+          <div className="attest__figure">
+            <dt className="sr-only">Average guest rating</dt>
+            <dd className="m-0">
+              <span className="attest__n">
+                {FLEET_AVERAGE_RATING.toFixed(1)}
+                <span className="attest__unit">of 5</span>
+              </span>
+              <span className="attest__label">
+                the fleet&rsquo;s average guest rating, which does not set the
+                score
+              </span>
+            </dd>
+          </div>
+        </dl>
+
+        <ul className="attest__refusals">
+          <li>Operators do not submit their own scores</li>
+          <li>Operators cannot see an audit before it is published</li>
+          <li>No placement, ranking, or change has ever been for sale</li>
+        </ul>
+      </section>
     </section>
   );
 }
