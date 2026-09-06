@@ -3,6 +3,8 @@ import { Zilla_Slab, Public_Sans, Noto_Kufi_Arabic, Noto_Naskh_Arabic } from "ne
 import "./globals.css";
 import { Assistant } from "@/components/assistant";
 import { MobileNav } from "@/components/mobile-nav";
+import { CompareProvider } from "@/components/compare-context";
+import { CompareTray } from "@/components/compare-tray";
 
 /* The record face: a surveyor's slab. Carries score numerals
    at cubit scale and every heading in the almanac. */
@@ -52,8 +54,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <a href="#main" className="skip-link">
           Skip to the register
         </a>
-        {children}
-        <MobileNav />
+        <CompareProvider>
+          {children}
+          <CompareTray />
+          <MobileNav />
+        </CompareProvider>
       </body>
     </html>
   );

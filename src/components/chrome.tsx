@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Assistant } from "./assistant";
 import { fmtEGP, FLEET_TOTAL, REVIEW_TOTAL, type Vessel } from "@/lib/fleet";
 import { Reading } from "./score";
+import { HoldButton } from "./compare-tray";
 
 /* ------------------------------------------------------------
    Running head — the almanac's masthead. One rule, no shadow.
@@ -160,6 +161,9 @@ export function Record({ vessel }: { vessel: Vessel }) {
             Cabins available
           </p>
         )}
+        <div className="mt-palm md:flex md:justify-end">
+          <HoldButton slug={vessel.slug} compact />
+        </div>
       </div>
     </article>
   );

@@ -11,6 +11,7 @@ import {
 import { ScoreBreakdown, BandLabel, BandKeyList } from "@/components/score";
 import { Masthead, SectionHead, Foot, SampleNote } from "@/components/chrome";
 import { CabinTable } from "@/components/cabins";
+import { HoldButton } from "@/components/compare-tray";
 
 export function generateStaticParams() {
   return FLEET.map((v) => ({ slug: v.slug }));
@@ -246,9 +247,7 @@ export default async function VesselPage({
               <Link href="/request" className="plate plate--primary no-underline">
                 Ask for a better price
               </Link>
-              <Link href="/search" className="plate plate--quiet no-underline">
-                Compare with the register
-              </Link>
+              <HoldButton slug={vessel.slug} />
             </div>
           </div>
         </section>
