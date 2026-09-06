@@ -164,24 +164,22 @@ export function Assistant() {
   return (
     <>
       {/* The call. Pinned, out of the way of the mobile nav. */}
+      {/* The call sits in the page's own flow at the foot, not floating
+          over records. A fixed tab over a register of numbers covers the
+          one thing the reader came for, at every width, on every page. */}
       {!open && (
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          className="fixed z-40 end-0 bottom-[4.5rem] md:bottom-0 md:end-0 plate text-fine"
-          style={{
-            boxShadow: "var(--lift-panel)",
-            background: "var(--ink)",
-            color: "var(--paper)",
-            border: 0,
-            borderRadius: 0,
-            borderStartStartRadius: "var(--radius-control)",
-            paddingInline: "var(--m-foot)",
-            minHeight: "var(--touch-min)",
-          }}
+        <div
+          className="px-span md:px-reach py-foot"
+          style={{ borderTop: "var(--rule-thin) solid var(--rule-quiet)" }}
         >
-          Help me read the register
-        </button>
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="plate plate--quiet"
+          >
+            Not sure how to read it? Answer five questions
+          </button>
+        </div>
       )}
 
       {open && (

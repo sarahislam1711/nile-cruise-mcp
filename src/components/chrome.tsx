@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Assistant } from "./assistant";
 import { fmtEGP, type Vessel } from "@/lib/fleet";
 import { Reading } from "./score";
 
@@ -189,7 +190,9 @@ export function SampleNote() {
    ------------------------------------------------------------ */
 export function Foot() {
   return (
-    <footer
+    <>
+      <Assistant />
+      <footer
       className="px-span md:px-reach pt-foot pb-fathom mt-auto"
       style={{ borderTop: "var(--rule-crest) solid var(--rule-ink)" }}
     >
@@ -223,6 +226,7 @@ export function Foot() {
         Readings published {new Date().getFullYear()} &middot; Scores are the
         platform&rsquo;s own and cannot be purchased
       </p>
-    </footer>
+      </footer>
+    </>
   );
 }

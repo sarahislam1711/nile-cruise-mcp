@@ -18,19 +18,10 @@ export default function MethodPage() {
 
       <main className="px-span md:px-reach pb-crest flex-1">
         <div className="pt-fathom">
-          <h1
-            style={{
-              fontSize: "clamp(2.5rem, 7vw, var(--t-flood))",
-              fontWeight: 600,
-              lineHeight: "var(--lh-tight)",
-              letterSpacing: "var(--tr-crest)",
-              maxWidth: "18ch",
-              margin: 0,
-            }}
-          >
+          <h1 className="station__title">
             How a vessel is measured.
           </h1>
-          <p className="mt-foot text-lead text-ink-secondary" style={{ maxWidth: "54ch" }}>
+          <p className="lede">
             Star ratings compress a whole voyage into one number chosen by
             whoever felt like writing a review. This register does the opposite:
             it takes the voyage apart, scores each part on the same yardstick,
@@ -39,12 +30,10 @@ export default function MethodPage() {
         </div>
 
         {/* The five dimensions and their weights */}
-        <section
-          aria-labelledby="dimensions"
-          className="mt-fathom pt-foot"
-          style={{ borderTop: "var(--rule-crest) solid var(--rule-ink)" }}
-        >
-          <h2 id="dimensions" style={{ fontSize: "var(--t-station)", fontWeight: 600 }}>
+        <section aria-labelledby="dimensions" className="station">
+          <div className="station__gradations" aria-hidden="true" />
+          <span className="station__plate" aria-hidden="true">I</span>
+          <h2 id="dimensions" className="station__title mt-palm">
             Five dimensions, {weightTotal} points
           </h2>
 
@@ -115,12 +104,10 @@ export default function MethodPage() {
         </section>
 
         {/* The bands */}
-        <section
-          aria-labelledby="bands"
-          className="mt-fathom pt-foot"
-          style={{ borderTop: "var(--rule-crest) solid var(--rule-ink)" }}
-        >
-          <h2 id="bands" style={{ fontSize: "var(--t-station)", fontWeight: 600 }}>
+        <section aria-labelledby="bands" className="station">
+          <div className="station__gradations" aria-hidden="true" />
+          <span className="station__plate" aria-hidden="true">II</span>
+          <h2 id="bands" className="station__title mt-palm">
             What the bands mean
           </h2>
           <p className="mt-foot text-ink-secondary max-w-[58ch]">
@@ -163,12 +150,10 @@ export default function MethodPage() {
         </section>
 
         {/* Independence — the actual product claim */}
-        <section
-          aria-labelledby="independence"
-          className="mt-fathom pt-foot"
-          style={{ borderTop: "var(--rule-crest) solid var(--rule-ink)" }}
-        >
-          <h2 id="independence" style={{ fontSize: "var(--t-station)", fontWeight: 600 }}>
+        <section aria-labelledby="independence" className="station">
+          <div className="station__gradations" aria-hidden="true" />
+          <span className="station__plate" aria-hidden="true">III</span>
+          <h2 id="independence" className="station__title mt-palm">
             Why operators cannot touch it
           </h2>
           <div className="mt-foot grid gap-fathom lg:grid-cols-2 max-w-[64rem]">

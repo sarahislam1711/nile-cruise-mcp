@@ -56,18 +56,14 @@ export default function SearchPage() {
       <main className="px-span md:px-reach pb-crest flex-1">
         <div className="pt-fathom">
           <h1
-            style={{
-              fontSize: "clamp(2rem, 5vw, var(--t-station))",
-              fontWeight: 600,
-              lineHeight: "var(--lh-record)",
-              margin: 0,
-            }}
+            className="station__title"
+            style={{ fontSize: "clamp(2.25rem, 5.5vw, var(--t-flood))" }}
           >
             The register
           </h1>
-          <p className="text-fine text-ink-secondary mt-hair mb-0">
-            {FLEET_TOTAL} audited vessels. Narrow by route, reading, price, or
-            what is on board.
+          <p className="lede">
+            {FLEET_TOTAL} audited vessels, ordered by reading.{" "}
+            <strong>Narrow it by what you actually care about.</strong>
           </p>
         </div>
 
@@ -90,7 +86,7 @@ export default function SearchPage() {
 
           <aside
             id="filter-panel"
-            className={`${panelOpen ? "block" : "hidden"} lg:block`}
+            className={`${panelOpen ? "block" : "hidden"} lg:block lg:sticky lg:top-foot lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto lg:pe-foot`}
             aria-label="Filters"
           >
             <Filters
@@ -107,11 +103,23 @@ export default function SearchPage() {
             >
               <h2
                 id="results-heading"
-                style={{ fontSize: "var(--t-record)", fontWeight: 600, margin: 0 }}
+                className="flex items-baseline gap-palm"
+                style={{
+                  fontFamily: "var(--font-record)",
+                  fontSize: "var(--t-cubit)",
+                  fontWeight: 600,
+                  letterSpacing: "var(--tr-cubit)",
+                  lineHeight: 1,
+                  margin: 0,
+                }}
               >
-                {results.length === FLEET.length
-                  ? "All readings"
-                  : `${results.length} matching`}
+                <span className="tabular">{results.length}</span>
+                <span style={{ fontSize: "var(--t-record)", fontWeight: 500 }}>
+                  {results.length === 1 ? "vessel" : "vessels"}
+                  {results.length !== FLEET.length && (
+                    <span className="text-ink-tertiary"> of {FLEET.length}</span>
+                  )}
+                </span>
               </h2>
               <div className="flex items-center gap-finger">
                 <label htmlFor="sort" className="rubric">Order by</label>
@@ -165,6 +173,25 @@ export default function SearchPage() {
                   <Record key={v.slug} vessel={v} />
                 ))}
                 <SampleNote />
+
+                {/* The register ends on a reckoning, not blank paper. */}
+                <div
+                  className="mt-fathom pt-foot flex flex-wrap items-end justify-between gap-foot"
+                  style={{ borderTop: "var(--rule-crest) solid var(--rule-ink)" }}
+                >
+                  <div>
+                    <p className="pull">
+                      Nothing here meets your terms exactly?
+                    </p>
+                    <p className="text-fine text-ink-secondary mt-palm mb-0 max-w-[46ch]">
+                      Post your terms instead and let operators bid against the
+                      same scale you have just read.
+                    </p>
+                  </div>
+                  <a href="/request" className="plate plate--primary no-underline">
+                    Post an anonymous request
+                  </a>
+                </div>
               </>
             )}
           </section>

@@ -112,12 +112,8 @@ export default async function VesselPage({
         </section>
 
         {/* The score — explicit bars, this is where judging happens */}
-        <section
-          aria-labelledby="score"
-          className="mt-fathom pt-foot"
-          style={{ borderTop: "var(--rule-crest) solid var(--rule-ink)" }}
-        >
-          <h2 id="score" style={{ fontSize: "var(--t-station)", fontWeight: 600 }}>
+        <section aria-labelledby="score" className="station">
+          <h2 id="score" className="station__title">
             The reading
           </h2>
           <p className="text-fine text-ink-secondary mt-hair mb-foot max-w-[56ch]">
@@ -155,11 +151,7 @@ export default async function VesselPage({
         </section>
 
         {/* Amenities — a plain ruled list, no icon tiles */}
-        <section
-          aria-labelledby="amenities"
-          className="mt-fathom pt-foot"
-          style={{ borderTop: "var(--rule-crest) solid var(--rule-ink)" }}
-        >
+        <section aria-labelledby="amenities" className="station">
           <h2
             id="amenities"
             style={{ fontSize: "var(--t-station)", fontWeight: 600 }}
@@ -180,24 +172,16 @@ export default async function VesselPage({
         </section>
 
         {/* Cabins and pricing — interactive */}
-        <section
-          aria-labelledby="cabins"
-          className="mt-fathom pt-foot"
-          style={{ borderTop: "var(--rule-crest) solid var(--rule-ink)" }}
-        >
-          <h2 id="cabins" style={{ fontSize: "var(--t-station)", fontWeight: 600 }}>
+        <section aria-labelledby="cabins" className="station">
+          <h2 id="cabins" className="station__title">
             Cabins and price
           </h2>
           <CabinTable vessel={vessel} />
         </section>
 
         {/* Guest reviews */}
-        <section
-          aria-labelledby="reviews"
-          className="mt-fathom pt-foot"
-          style={{ borderTop: "var(--rule-crest) solid var(--rule-ink)" }}
-        >
-          <h2 id="reviews" style={{ fontSize: "var(--t-station)", fontWeight: 600 }}>
+        <section aria-labelledby="reviews" className="station">
+          <h2 id="reviews" className="station__title">
             What guests recorded
           </h2>
           <p className="text-fine text-ink-secondary mt-hair mb-foot">
@@ -228,12 +212,8 @@ export default async function VesselPage({
         </section>
 
         {/* Operator */}
-        <section
-          aria-labelledby="operator"
-          className="mt-fathom pt-foot"
-          style={{ borderTop: "var(--rule-crest) solid var(--rule-ink)" }}
-        >
-          <h2 id="operator" style={{ fontSize: "var(--t-station)", fontWeight: 600 }}>
+        <section aria-labelledby="operator" className="station">
+          <h2 id="operator" className="station__title">
             The operator
           </h2>
           <div className="mt-foot grid gap-foot md:grid-cols-[minmax(0,30rem)_auto] items-start">
@@ -274,12 +254,8 @@ export default async function VesselPage({
         </section>
 
         {/* Neighbouring readings */}
-        <section
-          aria-labelledby="nearby"
-          className="mt-fathom pt-foot"
-          style={{ borderTop: "var(--rule-crest) solid var(--rule-ink)" }}
-        >
-          <h2 id="nearby" style={{ fontSize: "var(--t-station)", fontWeight: 600 }}>
+        <section aria-labelledby="nearby" className="station">
+          <h2 id="nearby" className="station__title">
             Other readings
           </h2>
           <ul className="list-none m-0 mt-foot p-0">
