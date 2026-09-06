@@ -192,15 +192,13 @@ export function Foot() {
   const year = new Date().getFullYear();
 
   return (
-    <>
-      <Assistant />
-      <footer
+    <footer
         className="px-span md:px-reach pt-fathom pb-foot mt-auto"
         style={{ borderTop: "var(--rule-crest) solid var(--rule-ink)" }}
       >
         {/* The colophon: what this register is, in the register's
             own voice, before the navigation. */}
-        <div className="grid gap-fathom lg:grid-cols-[minmax(0,26rem)_1fr] items-start">
+        <div className="grid gap-fathom lg:grid-cols-[minmax(0,22rem)_1fr] items-start">
           <div>
             <p
               className="font-[family-name:var(--font-record)] m-0"
@@ -244,10 +242,13 @@ export function Foot() {
                 </div>
               ))}
             </dl>
+
+            {/* The one offer the footer makes, in the colophon's own
+                column so it never takes a band of its own. */}
           </div>
 
           {/* Navigation, grouped by what the visitor is trying to do. */}
-          <nav aria-label="Footer" className="grid gap-fathom sm:grid-cols-3">
+          <nav aria-label="Footer" className="grid gap-foot sm:grid-cols-3 lg:gap-fathom">
             {[
               {
                 heading: "Read",
@@ -294,9 +295,22 @@ export function Foot() {
           </nav>
         </div>
 
+        {/* The offer sits beneath the columns, spanning the footer,
+            so neither the colophon nor the nav has to hold it. */}
+        <div
+          className="mt-fathom pt-foot flex flex-wrap items-center justify-between gap-foot"
+          style={{ borderTop: "var(--rule-thin) solid var(--rule-plain)" }}
+        >
+          <p className="text-fine text-ink-secondary m-0 max-w-[44ch]">
+            Not sure which reading suits you? Answer five questions and we will
+            narrow the register for you.
+          </p>
+          <Assistant />
+        </div>
+
         {/* The imprint line — the almanac's own closing statement. */}
         <div
-          className="mt-flood pt-foot flex flex-wrap items-baseline justify-between gap-foot"
+          className="mt-cubit pt-foot flex flex-wrap items-baseline justify-between gap-foot"
           style={{ borderTop: "var(--rule-mid) solid var(--rule-ink)" }}
         >
           <p className="rubric m-0">
@@ -308,6 +322,5 @@ export function Foot() {
           </p>
         </div>
       </footer>
-    </>
   );
 }

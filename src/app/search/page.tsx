@@ -86,7 +86,7 @@ export default function SearchPage() {
 
           <aside
             id="filter-panel"
-            className={`${panelOpen ? "block" : "hidden"} lg:block lg:sticky lg:top-foot lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto lg:pe-foot`}
+            className={`${panelOpen ? "block" : "hidden"} lg:block lg:sticky lg:top-foot lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto contain-scroll lg:pe-foot`}
             aria-label="Filters"
           >
             <Filters

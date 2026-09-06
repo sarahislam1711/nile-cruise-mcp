@@ -872,7 +872,6 @@ input, select, textarea, button { font: inherit; color: inherit; }
 .attest {
   margin-top: var(--m-fathom);
   border-top: var(--rule-crest) solid var(--rule-ink);
-  border-bottom: var(--rule-mid) solid var(--rule-ink);
 }
 
 /* The figures, read across as a ruled row of stations. */
@@ -883,6 +882,7 @@ input, select, textarea, button { font: inherit; color: inherit; }
 }
 .attest__figure {
   padding: var(--m-foot) var(--m-foot) var(--m-foot) 0;
+  min-width: 0;
   border-inline-end: var(--rule-hair) solid var(--rule-plain);
 }
 .attest__figure:last-child {
@@ -1141,6 +1141,16 @@ input, select, textarea, button { font: inherit; color: inherit; }
     transparent 1px 4px
   );
   mix-blend-mode: multiply;
+}
+
+
+/* Scroll containment. A panel that reaches its end should stop,
+   not hand the wheel to the page behind it — scroll chaining is
+   how a picker throws the reader out of the thing they were
+   using. */
+.contain-scroll {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 }

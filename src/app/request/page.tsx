@@ -189,7 +189,7 @@ export default function RequestPage() {
       <Masthead />
 
       <main className="px-span md:px-reach pb-fathom flex-1">
-        <div className="pt-fathom max-w-[46rem]">
+        <div className="pt-fathom max-w-[46rem] mx-auto">
           <h1
             style={{
               fontSize: "clamp(2rem, 5vw, var(--t-station))",
@@ -207,7 +207,7 @@ export default function RequestPage() {
         </div>
 
         {/* Progress, drawn as gradations on the measure */}
-        <div className="mt-fathom max-w-[46rem]">
+        <div className="mt-fathom max-w-[46rem] mx-auto">
           <ol className="flex list-none m-0 p-0 gap-hair" aria-label="Progress">
             {STEPS.map((s) => (
               <li key={s.n} className="flex-1">
@@ -241,7 +241,7 @@ export default function RequestPage() {
         </div>
 
         <form
-          className="mt-fathom max-w-[46rem]"
+          className="mt-fathom max-w-[46rem] mx-auto"
           onSubmit={(e) => {
             e.preventDefault();
             if (step < 3) setStep(step + 1);

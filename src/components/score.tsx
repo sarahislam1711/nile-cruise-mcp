@@ -208,7 +208,7 @@ export function BandKeyList() {
       {BANDS.map((b) => (
         <div
           key={b.key}
-          className="flex items-baseline justify-between gap-palm py-finger"
+          className="flex items-baseline justify-between gap-foot py-palm"
           style={{ borderTop: "var(--rule-hair) solid var(--rule-quiet)" }}
         >
           <dt className="flex items-center gap-finger min-w-0">

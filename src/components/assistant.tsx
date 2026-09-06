@@ -164,22 +164,35 @@ export function Assistant() {
   return (
     <>
       {/* The call. Pinned, out of the way of the mobile nav. */}
-      {/* The call sits in the page's own flow at the foot, not floating
-          over records. A fixed tab over a register of numbers covers the
-          one thing the reader came for, at every width, on every page. */}
+      {/* The call rides in the footer's own row rather than taking a
+          band of its own: a plate in the register's voice, primary
+          weight, since it is the one thing on the page that answers a
+          reader who does not know how to read it. */}
       {!open && (
-        <div
-          className="px-span md:px-reach py-foot"
-          style={{ borderTop: "var(--rule-thin) solid var(--rule-quiet)" }}
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="plate plate--primary shrink-0"
+          style={{ paddingInline: "var(--m-foot)" }}
         >
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            className="plate plate--quiet"
+          <span
+            className="font-[family-name:var(--font-record)]"
+            style={{
+              fontSize: "var(--t-record)",
+              fontWeight: 600,
+              letterSpacing: "var(--tr-cubit)",
+              lineHeight: 1.1,
+            }}
           >
-            Not sure how to read it? Answer five questions
-          </button>
-        </div>
+            Five questions
+          </span>
+          <span
+            aria-hidden="true"
+            style={{ color: "var(--paper)", opacity: 0.7, fontSize: "var(--t-record)" }}
+          >
+            &rarr;
+          </span>
+        </button>
       )}
 
       {open && (
@@ -191,7 +204,7 @@ export function Assistant() {
           aria-label="Reading assistant"
         >
           <div
-            className="w-full sm:max-w-[30rem] h-full overflow-y-auto p-foot"
+            className="w-full sm:max-w-[30rem] h-full overflow-y-auto contain-scroll p-foot"
             style={{
               background: "var(--paper-raised)",
               boxShadow: "var(--lift-panel)",

@@ -345,8 +345,11 @@ export default function Home() {
               className="pt-foot lg:pt-0 lg:ps-fathom"
               style={{ borderTop: "var(--rule-thin) solid var(--rule-quiet)" }}
             >
-              <h3 className="rubric mb-palm">Why the weights differ</h3>
-              <p className="pull">
+              {/* Sits on the same baseline as the table's column heads,
+                  so the two columns start together rather than the aside
+                  floating in the middle of its own space. */}
+              <h3 className="rubric m-0 pb-finger">Why the weights differ</h3>
+              <p className="pull mt-palm">
                 A crew&rsquo;s conduct is worth three times an
                 operator&rsquo;s paperwork.
               </p>
