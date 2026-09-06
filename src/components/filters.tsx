@@ -42,43 +42,30 @@ function Fieldset({
 }) {
   const lead = emphasis === "lead";
   return (
-    <fieldset
-      className="m-0 p-0 pt-foot mt-foot"
-      style={{
-        border: 0,
-        borderTop: lead
-          ? "var(--rule-mid) solid var(--rule-ink)"
-          : "var(--rule-thin) solid var(--rule-quiet)",
-      }}
-    >
-      {/* A legend sits on the fieldset's border by default, so the rule
-          runs into the words. Padding the inline edges lets the ground
-          break the line cleanly on both sides of the text. */}
-      <legend
-        className={lead ? "mb-hair" : "rubric mb-palm"}
-        style={{
-          paddingInlineStart: 0,
-          paddingInlineEnd: "var(--m-foot)",
-          background: "var(--paper)",
-          ...(lead
-            ? {
-                fontFamily: "var(--font-record)",
-                fontSize: "var(--t-record)",
-                fontWeight: 600,
-                letterSpacing: "var(--tr-cubit)",
-                color: "var(--ink)",
-              }
-            : {}),
-        }}
-      >
-        {legend}
+    /* No border on the fieldset itself: a legend sitting in a border
+       needs a background to break the line, and any background reads
+       as a patch on this ground. The rule is drawn under the legend
+       instead, which is also how every other heading here works. */
+    <fieldset className="m-0 p-0 border-0 mt-foot">
+      <legend className="p-0 w-full">
+        <span
+          className="rubric block pb-finger"
+          style={{
+            borderBottom: lead
+              ? "var(--rule-mid) solid var(--rule-ink)"
+              : "var(--rule-thin) solid var(--rule-quiet)",
+            ...(lead ? { color: "var(--ink)" } : {}),
+          }}
+        >
+          {legend}
+        </span>
       </legend>
       {note && (
-        <p className="text-micro text-ink-tertiary m-0 mb-palm max-w-[30ch]">
+        <p className="text-micro text-ink-tertiary m-0 mt-palm mb-palm max-w-[32ch]">
           {note}
         </p>
       )}
-      {children}
+      <div className={note ? "" : "mt-palm"}>{children}</div>
     </fieldset>
   );
 }
@@ -96,16 +83,16 @@ function Collapsible({
 }) {
   const [open, setOpen] = useState(false);
   return (
-    <div
-      className="pt-foot mt-foot"
-      style={{ borderTop: "var(--rule-thin) solid var(--rule-quiet)" }}
-    >
+    <div className="mt-foot">
       <button
         type="button"
         onClick={() => setOpen((o: boolean) => !o)}
         aria-expanded={open}
-        className="flex w-full items-center justify-between gap-palm text-start"
-        style={{ minHeight: "var(--touch-min)" }}
+        className="flex w-full items-center justify-between gap-palm text-start pb-finger"
+        style={{
+          minHeight: "var(--touch-min)",
+          borderBottom: "var(--rule-thin) solid var(--rule-quiet)",
+        }}
       >
         <span className="rubric">
           {legend}
@@ -336,7 +323,7 @@ export function Filters({
       </Collapsible>
 
       <div
-        className="mt-foot pt-foot flex items-center justify-between gap-palm flex-wrap"
+        className="mt-cubit pt-palm flex items-center justify-between gap-palm flex-wrap"
         style={{ borderTop: "var(--rule-mid) solid var(--rule-ink)" }}
       >
         <span className="rubric">
