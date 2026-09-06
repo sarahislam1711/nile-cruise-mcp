@@ -1,0 +1,859 @@
+@import "tailwindcss";
+
+/* ============================================================
+   THE FLOOD ALMANAC
+   Design tokens for Nile Cruise MCP.
+
+   The Nile was measured and published every year for five
+   thousand years. A nilometer graded the flood in cubits and
+   that number set taxes, planting, survival. The measurement
+   was the product, and it was set as a ruled table.
+
+   This system reckons 79 vessels on one graduated measure.
+   The audited number leads; photography corroborates.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. COLOR
+
+   Strategy: Restrained. Paper ground, ink, ONE action accent.
+   Bronze is structure and never signals. Reed green marks
+   verified facts only. Nothing else may become an accent.
+
+   Scene that forced light-first: a traveler comparing vessels
+   in daylight, often on a phone outdoors, reading a document
+   they may print or screenshot for a travel companion. This is
+   a record to be read, not an atmosphere to sit inside.
+   ------------------------------------------------------------ */
+:root {
+  /* Ground — laid almanac paper, warm without going cream-sweet */
+  --paper:            #F4EFE4;
+  --paper-raised:     #FAF7F0;  /* lifted rows, sticky headers */
+  --paper-sunk:       #EAE3D3;  /* wells, inputs, table zebra */
+  --paper-edge:       #DED5C1;  /* the deckle, hairline rules */
+
+  /* Ink
+
+     Measured against --paper. The ramp was originally pitched
+     too light: most body copy on this surface is secondary or
+     tertiary rather than full ink, so a ramp that merely
+     cleared the floor read washed out across whole pages, and
+     --ink-quiet failed AA outright at 3.27:1.
+
+     Every step now clears 4.5:1 with real headroom, and the
+     gaps between steps are wide enough to read as hierarchy
+     rather than as three shades of the same grey-brown. */
+  --ink:              #1C1A15;  /* 15.16:1 */
+  --ink-secondary:    #3A352A;  /* 10.63:1 — the workhorse */
+  --ink-tertiary:     #57503F;  /*  6.98:1 — meta, captions   */
+  --ink-quiet:        #6E6553;  /*  5.02:1 — muted, still AA  */
+
+  /* Lapis — the sole action color. Every link, every primary
+     action, every focus ring. Nothing else earns it. */
+  --lapis:            #1B3A5C;  /* 9.7:1 on paper */
+  --lapis-bright:     #2C5C8F;  /* hover; 5.4:1 */
+  --lapis-wash:       #E3E9F0;  /* selected row ground */
+
+  /* Oxidized bronze — STRUCTURE ONLY. Rules, scale gradations,
+     ornament. Never a button, never a link, never a status. */
+  --bronze:           #8A6A3B;
+  --bronze-deep:      #5E4726;
+  --bronze-wash:      #EFE7D6;
+
+  /* Reed green — verified facts only. Audit confirmations,
+     verified-booking marks, availability. */
+  --reed:             #3F5D4E;  /* 7.2:1 */
+  --reed-wash:        #E4EBE5;
+
+  /* Silt red — problems only. Sold out, expired, errors. */
+  --silt:             #8C2F22;  /* 7.9:1 */
+  --silt-wash:        #F5E4E0;
+
+  /* --- Quality band stations on the graduated measure ---
+     Each band carries a NAME and a PATTERN as well as a hue,
+     so the score survives grayscale and color-blindness.
+     Ranges are the observed clusters in the 79-vessel fleet.
+
+     Every band is dark enough to carry paper-colored text at
+     4.5:1 or better, because counts and labels are set on the
+     bands themselves:
+       luxury 10.14 · deluxe 6.34 · superior 5.39
+       standard 5.71 · basic 6.64
+     Do not lighten these without re-measuring. */
+  --band-luxury:      #1B3A5C;  /* 92.85–98.35 */
+  --band-deluxe:      #3F5D4E;  /* 81.70–90.00 */
+  --band-superior:    #7A5C2E;  /* 77.30–79.90 */
+  --band-standard:    #6E5B33;  /* 70.60–72.50 */
+  --band-basic:       #5E5241;  /* 40.00–59.00 */
+
+  /* --- Score dimension weights, as data ---
+     Service 30 · Hygiene 20 · Food 20 · Amenities 20 · Mgmt 10 */
+  --dim-service-max:   30;
+  --dim-hygiene-max:   20;
+  --dim-food-max:      20;
+  --dim-amenities-max: 20;
+  --dim-management-max: 10;
+
+  /* Browser surfaces — the parts we did not draw still carry
+     the design. */
+  --selection-bg:     #D9E2EC;
+  --selection-fg:     #1C1A15;
+  --focus-ring:       var(--lapis);
+
+  /* ----------------------------------------------------------
+     2. TYPE
+
+     Zilla Slab — surveyor's slab. Sets numerals with the
+     authority of a measurement, not the romance of a magazine.
+     Carries the cubit-scale score numerals.
+
+     Public Sans — civic register workhorse. The voice of a
+     published record. Body, controls, tables.
+
+     Noto Kufi / Naskh Arabic — real companions, weight-matched.
+     Arabic is a first-class script here, not a fallback.
+     ---------------------------------------------------------- */
+  --font-record: var(--font-zilla), ui-serif, Georgia, serif;
+  --font-text:   var(--font-public), ui-sans-serif, system-ui, sans-serif;
+  --font-ar-display: var(--font-kufi), var(--font-zilla), sans-serif;
+  --font-ar-text:    var(--font-naskh), var(--font-public), sans-serif;
+
+  /* Scale — a graduated measure, not a modular ratio.
+     Steps are spaced like nilometer gradations: fine at the
+     reading end, dramatic at the measurement end. */
+  --t-micro:   0.6875rem; /* 11px — plate numbers, gradation labels */
+  --t-fine:    0.8125rem; /* 13px — table meta, captions */
+  --t-body:    1rem;      /* 16px — the WCAG floor, never smaller */
+  --t-lead:    1.125rem;  /* 18px — lead paragraphs */
+  --t-record:  1.375rem;  /* 22px — vessel names in the register */
+  --t-station: 1.75rem;   /* 28px — band station labels */
+  --t-cubit:   2.75rem;   /* 44px — score numerals on records */
+  --t-flood:   4.5rem;    /* 72px — the measure's headline reading */
+  --t-crest:   6rem;      /* 96px — display ceiling, never exceeded */
+
+  --lh-tight:  1.05;
+  --lh-record: 1.2;
+  --lh-body:   1.6;
+  --lh-loose:  1.75;
+
+  /* Tracking floor is -0.04em; these sit inside it. */
+  --tr-crest:  -0.03em;
+  --tr-cubit:  -0.02em;
+  --tr-body:    0em;
+  --tr-label:   0.09em;  /* the almanac's small caps rubrics */
+
+  /* ----------------------------------------------------------
+     3. MEASURE (spacing)
+
+     Named for the nilometer's own gradations rather than
+     t-shirt sizes, on a 4px base.
+     ---------------------------------------------------------- */
+  --m-hair:    0.25rem;  /*  4 */
+  --m-finger:  0.5rem;   /*  8 */
+  --m-palm:    0.75rem;  /* 12 */
+  --m-span:    1rem;     /* 16 */
+  --m-foot:    1.5rem;   /* 24 */
+  --m-cubit:   2rem;     /* 32 */
+  --m-fathom:  3rem;     /* 48 */
+  --m-reach:   4rem;     /* 64 */
+  --m-flood:   6rem;     /* 96 */
+  --m-crest:   8rem;     /* 128 */
+
+  /* ----------------------------------------------------------
+     4. RULE
+
+     Elevation is declared ONCE, by rule weight — never a border
+     under a shadow. The almanac's hierarchy is entirely in the
+     weight of its ruled lines.
+     ---------------------------------------------------------- */
+  --rule-hair:   0.5px;
+  --rule-thin:   1px;
+  --rule-mid:    2px;
+  --rule-heavy:  3px;
+  --rule-crest:  6px;
+
+  --rule-quiet:  var(--paper-edge);
+  --rule-plain:  #C8BCA2;
+  --rule-strong: var(--bronze);
+  --rule-ink:    var(--ink);
+
+  /* Radii: this world is letterpress. Rows and plates are
+     square. Only small controls take a radius. */
+  --radius-none:    0;
+  --radius-control: 3px;
+  --radius-pill:    999px;
+
+  /* Shadows: offset + soft blur, warm-tinted from the paper.
+     Used sparingly — a lifted row, an open panel. */
+  --lift-row:   0 1px 2px rgba(28, 26, 21, 0.06),
+                0 2px 6px rgba(28, 26, 21, 0.05);
+  --lift-panel: 0 4px 10px rgba(28, 26, 21, 0.08),
+                0 12px 32px rgba(28, 26, 21, 0.10);
+
+  /* ----------------------------------------------------------
+     5. MOTION
+
+     One authored moment: the flood rise. Score bars and the
+     graduated measure fill from their datum the way water rises
+     against a scale — exponential ease-out, staggered by
+     dimension weight so Service (30) leads.
+     Everything else is near-instant.
+     ---------------------------------------------------------- */
+  --ease-rise:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-settle: cubic-bezier(0.33, 1, 0.68, 1);
+
+  --dur-instant: 90ms;
+  --dur-control: 160ms;
+  --dur-panel:   260ms;
+  --dur-rise:    900ms;
+
+  /* Touch target floor — 44px, non-negotiable at 80% mobile. */
+  --touch-min: 2.75rem;
+
+  --measure-text: 68ch;  /* body measure, inside 65–75ch */
+}
+
+/* ------------------------------------------------------------
+   Tailwind v4 theme bridge
+   ------------------------------------------------------------ */
+@theme inline {
+  --color-paper:        var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-paper-sunk:   var(--paper-sunk);
+  --color-paper-edge:   var(--paper-edge);
+
+  --color-ink:           var(--ink);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-tertiary:  var(--ink-tertiary);
+  --color-ink-quiet:     var(--ink-quiet);
+
+  --color-lapis:        var(--lapis);
+  --color-lapis-bright: var(--lapis-bright);
+  --color-lapis-wash:   var(--lapis-wash);
+
+  --color-bronze:      var(--bronze);
+  --color-bronze-deep: var(--bronze-deep);
+  --color-bronze-wash: var(--bronze-wash);
+
+  --color-reed:      var(--reed);
+  --color-reed-wash: var(--reed-wash);
+  --color-silt:      var(--silt);
+  --color-silt-wash: var(--silt-wash);
+
+  --color-band-luxury:   var(--band-luxury);
+  --color-band-deluxe:   var(--band-deluxe);
+  --color-band-superior: var(--band-superior);
+  --color-band-standard: var(--band-standard);
+  --color-band-basic:    var(--band-basic);
+
+  --font-record: var(--font-record);
+  --font-text:   var(--font-text);
+
+  --text-micro:   var(--t-micro);
+  --text-fine:    var(--t-fine);
+  --text-body:    var(--t-body);
+  --text-lead:    var(--t-lead);
+  --text-record:  var(--t-record);
+  --text-station: var(--t-station);
+  --text-cubit:   var(--t-cubit);
+  --text-flood:   var(--t-flood);
+  --text-crest:   var(--t-crest);
+
+  --spacing-hair:   var(--m-hair);
+  --spacing-finger: var(--m-finger);
+  --spacing-palm:   var(--m-palm);
+  --spacing-span:   var(--m-span);
+  --spacing-foot:   var(--m-foot);
+  --spacing-cubit:  var(--m-cubit);
+  --spacing-fathom: var(--m-fathom);
+  --spacing-reach:  var(--m-reach);
+  --spacing-flood:  var(--m-flood);
+  --spacing-crest:  var(--m-crest);
+
+  --ease-rise:   var(--ease-rise);
+  --ease-settle: var(--ease-settle);
+}
+
+/* ------------------------------------------------------------
+   Base
+   ------------------------------------------------------------ */
+* { border-color: var(--rule-quiet); }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  font-feature-settings: "kern" 1, "liga" 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* The paper has a tooth.
+
+   Laid paper is made on a wire mould: closely spaced laid lines
+   run one way, widely spaced chain lines the other, and the
+   sheet is thinner where the wire pressed. That is the ground
+   this whole system sits on, so it is painted on the body
+   itself rather than an overlay — an overlay lands behind any
+   positioned descendant and the grain disappears.
+
+   Chain lines every 26px, laid lines every 3px, plus a faint
+   fibre mottle. Kept under 4% so text contrast is unaffected. */
+body {
+  background-color: var(--paper);
+  background-image:
+    /* fibre mottle */
+    radial-gradient(
+      circle at 17% 34%,
+      rgba(138, 106, 59, 0.028) 0 38%,
+      transparent 68%
+    ),
+    radial-gradient(
+      circle at 74% 12%,
+      rgba(94, 71, 38, 0.022) 0 32%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 61% 78%,
+      rgba(138, 106, 59, 0.025) 0 30%,
+      transparent 62%
+    ),
+    /* chain lines — widely spaced, the mould's ribs */
+    repeating-linear-gradient(
+      90deg,
+      rgba(94, 71, 38, 0.018) 0 1px,
+      transparent 1px 34px
+    ),
+    /* laid lines — close pitch, the wire itself */
+    repeating-linear-gradient(
+      0deg,
+      rgba(138, 106, 59, 0.014) 0 1px,
+      transparent 1px 4px
+    );
+  background-attachment: fixed, fixed, fixed, scroll, scroll;
+  background-size: 780px 620px, 640px 540px, 700px 580px, auto, auto;
+}
+
+/* Arabic / RTL — a first-class script, not a retrofit. */
+:lang(ar), [dir="rtl"] {
+  font-family: var(--font-ar-text);
+  line-height: var(--lh-loose);
+}
+:lang(ar) h1, :lang(ar) h2, :lang(ar) h3,
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 {
+  font-family: var(--font-ar-display);
+  letter-spacing: 0;  /* Arabic never takes Latin tracking */
+}
+/* Arabic small-caps rubrics do not exist; use weight instead. */
+:lang(ar) .rubric, [dir="rtl"] .rubric {
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 700;
+}
+
+/* Headings inherit the record face. */
+h1, h2, h3, h4 {
+  font-family: var(--font-record);
+  font-weight: 600;
+  line-height: var(--lh-record);
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+p { text-wrap: pretty; max-width: var(--measure-text); }
+
+/* Every figure in this product is a measurement. Tabular,
+   lining numerals everywhere, always. */
+.tabular,
+td, th,
+input[type="number"],
+time,
+[data-numeral] {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+/* ------------------------------------------------------------
+   Browser surfaces — themed from the palette
+   ------------------------------------------------------------ */
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-fg);
+}
+
+:focus-visible {
+  outline: var(--rule-mid) solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-control);
+}
+
+/* A focus ring is never removed, only re-placed. */
+:focus:not(:focus-visible) { outline: none; }
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bronze) transparent;
+}
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--paper-sunk); }
+::-webkit-scrollbar-thumb {
+  background: var(--bronze);
+  border: 2px solid var(--paper-sunk);
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--bronze-deep); }
+
+a {
+  color: var(--lapis);
+  text-decoration-color: color-mix(in srgb, var(--lapis) 40%, transparent);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  transition: color var(--dur-control) var(--ease-settle);
+}
+a:hover {
+  color: var(--lapis-bright);
+  text-decoration-color: currentColor;
+}
+
+input, select, textarea, button { font: inherit; color: inherit; }
+
+::placeholder {
+  color: var(--ink-tertiary);  /* 4.6:1 — meets AA, never gray */
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------
+   The graduated measure
+   The recurring device: a nilometer scale. Used at page scale
+   for the fleet, and at row scale for a single score.
+   ------------------------------------------------------------ */
+.measure {
+  position: relative;
+  border-top: var(--rule-hair) solid var(--rule-plain);
+  border-bottom: var(--rule-mid) solid var(--rule-ink);
+}
+
+/* Gradations. A nilometer's authority is its ticks, so they are
+   drawn at the pitch of the scale rather than suggested:
+   short ticks from the top edge, long ticks every fifth.
+   Pitch is set per-instance with --tick-pitch. */
+.measure__gradations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.measure__gradations::before,
+.measure__gradations::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+/* minor: every gradation, biting a third of the scale's depth */
+.measure__gradations::before {
+  top: 0;
+  height: 34%;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(244, 239, 228, 0.55) 0 1px,
+    transparent 1px var(--tick-pitch, 1.25%)
+  );
+}
+/* major: every fifth gradation, biting deeper */
+.measure__gradations::after {
+  top: 0;
+  height: 62%;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(244, 239, 228, 0.85) 0 1.5px,
+    transparent 1.5px calc(var(--tick-pitch, 1.25%) * 5)
+  );
+}
+
+/* One tick per vessel, seated on the datum line. This is the
+   fleet itself, not a decoration: 79 marks, one per audited
+   boat, at its own position on the measure. */
+.vessel-tick {
+  position: absolute;
+  bottom: 0;
+  width: 1px;
+  height: 30%;
+  background: var(--paper);
+  opacity: 0.75;
+  transform: translateX(-0.5px);
+}
+[dir="rtl"] .vessel-tick { transform: translateX(0.5px); }
+
+/* The rise: water against a scale. Exponential ease-out from an
+   already-visible datum, so content never depends on motion. */
+@keyframes flood-rise {
+  from { transform: scaleX(var(--rise-from, 0)); }
+  to   { transform: scaleX(1); }
+}
+
+.rise {
+  transform-origin: left center;
+  animation: flood-rise var(--dur-rise) var(--ease-rise) both;
+  animation-delay: var(--rise-delay, 0ms);
+}
+[dir="rtl"] .rise { transform-origin: right center; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+    transform: scaleX(1);
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   Band patterns — score legibility without color
+
+   Each quality band carries a distinct fill pattern in addition
+   to its hue and its written name. Three channels: name,
+   pattern, hue. Grayscale and color-blind safe by construction.
+   ------------------------------------------------------------ */
+.band-luxury   { background-color: var(--band-luxury); }
+.band-deluxe   { background-color: var(--band-deluxe); }
+.band-superior { background-color: var(--band-superior); }
+.band-standard { background-color: var(--band-standard); }
+.band-basic    { background-color: var(--band-basic); }
+
+.band-luxury::after,
+.band-deluxe::after,
+.band-superior::after,
+.band-standard::after,
+.band-basic::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+/* Solid — the highest band needs no texture to be read */
+.band-luxury::after { background: none; }
+/* Dense fine rule */
+.band-deluxe::after {
+  background: repeating-linear-gradient(
+    90deg, rgba(244,239,228,.30) 0 1px, transparent 1px 4px);
+}
+/* Diagonal */
+.band-superior::after {
+  background: repeating-linear-gradient(
+    45deg, rgba(244,239,228,.32) 0 1.5px, transparent 1.5px 6px);
+}
+/* Wide rule */
+.band-standard::after {
+  background: repeating-linear-gradient(
+    90deg, rgba(244,239,228,.34) 0 2px, transparent 2px 9px);
+}
+/* Cross-hatch — the sparsest ink for the lowest band */
+.band-basic::after {
+  background:
+    repeating-linear-gradient(45deg,  rgba(244,239,228,.30) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(-45deg, rgba(244,239,228,.30) 0 1px, transparent 1px 7px);
+}
+
+/* ------------------------------------------------------------
+   Rubric — the almanac's small tracked label
+   ------------------------------------------------------------ */
+.rubric {
+  font-family: var(--font-text);
+  font-size: var(--t-micro);
+  font-weight: 600;
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--ink-tertiary);
+}
+
+/* ------------------------------------------------------------
+   Record row — the fleet's unit. Ruled, never a card.
+   ------------------------------------------------------------ */
+.record {
+  border-bottom: var(--rule-thin) solid var(--rule-quiet);
+  transition:
+    background-color var(--dur-control) var(--ease-settle),
+    box-shadow var(--dur-control) var(--ease-settle);
+}
+.record:hover {
+  background-color: var(--paper-raised);
+  box-shadow: var(--lift-row);
+}
+.record:has(:focus-visible) { background-color: var(--lapis-wash); }
+
+/* State prints itself as content, in the table's own language. */
+.record[data-state="soldout"] { color: var(--ink-quiet); }
+.record[data-state="soldout"] .record__price {
+  text-decoration: line-through;
+  text-decoration-color: var(--silt);
+  text-decoration-thickness: var(--rule-thin);
+}
+
+/* ------------------------------------------------------------
+   Controls — square letterpress plates, one accent only
+   ------------------------------------------------------------ */
+.plate {
+  min-height: var(--touch-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--m-finger);
+  padding: var(--m-palm) var(--m-foot);
+  border-radius: var(--radius-control);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-control) var(--ease-settle),
+    color var(--dur-control) var(--ease-settle),
+    transform var(--dur-instant) var(--ease-settle);
+}
+.plate:active { transform: translateY(1px); }
+.plate[disabled] { opacity: 0.45; cursor: not-allowed; }
+
+.plate--primary {
+  background: var(--lapis);
+  color: var(--paper);
+  border: var(--rule-thin) solid var(--lapis);
+}
+.plate--primary:hover:not([disabled]) { background: var(--lapis-bright); }
+
+.plate--quiet {
+  background: transparent;
+  color: var(--ink);
+  border: var(--rule-thin) solid var(--rule-plain);
+}
+.plate--quiet:hover:not([disabled]) {
+  background: var(--paper-sunk);
+  border-color: var(--ink);
+}
+
+/* Screen-reader-only, unset when focused. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip link — visible only when focused, in the world's own voice. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: var(--m-span);
+  z-index: 100;
+  padding: var(--m-palm) var(--m-foot);
+  background: var(--lapis);
+  color: var(--paper);
+  border-radius: var(--radius-control);
+  text-decoration: none;
+  font-size: var(--t-fine);
+  font-weight: 600;
+}
+.skip-link:focus {
+  left: var(--m-span);
+}
+
+@layer components {
+/* ============================================================
+   SECTION STATIONS
+
+   Sections were reading flat because they opted out of the
+   system's own strongest moves: the graduated measure, the
+   band patterns, the five rule weights, and cubit-scale
+   numerals. A heading set at 28px above a hairline is not
+   part of this world; it is generic text wearing it.
+
+   A station is how an almanac announces a new reckoning:
+   a numbered plate, a crest rule, and a heading at flood
+   scale. Three weights of station, so the page has peaks
+   and valleys rather than one flat register.
+   ============================================================ */
+
+.station {
+  position: relative;
+  margin-top: var(--m-flood);
+  padding-top: var(--m-foot);
+  border-top: var(--rule-crest) solid var(--rule-ink);
+}
+.station--minor {
+  margin-top: var(--m-fathom);
+  border-top-width: var(--rule-mid);
+}
+
+/* The plate number: an almanac numbers its plates, and the
+   numeral is set in the record face at station scale so the
+   eye has a fixed point to track down the page. */
+.station__plate {
+  display: block;
+  font-family: var(--font-record);
+  font-size: var(--t-cubit);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: var(--tr-cubit);
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--bronze);
+}
+.station--minor .station__plate {
+  font-size: var(--t-station);
+}
+
+/* The heading itself, at flood scale rather than station
+   scale. This is the single biggest lever: a section title
+   that reads at the same size as body copy's big brother
+   never announces anything. */
+.station__title {
+  font-family: var(--font-record);
+  font-size: clamp(2rem, 4.5vw, var(--t-flood));
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tr-crest);
+  text-wrap: balance;
+  margin: 0;
+  max-width: 20ch;
+}
+.station--minor .station__title {
+  font-size: clamp(1.5rem, 3vw, var(--t-station));
+  letter-spacing: var(--tr-cubit);
+  max-width: 28ch;
+}
+
+/* The standfirst: one line of orienting copy at lead size,
+   which gives the eye somewhere to land after the heading
+   instead of dropping straight into dense table rows. */
+.station__standfirst {
+  font-size: var(--t-lead);
+  line-height: var(--lh-body);
+  color: var(--ink-secondary);
+  max-width: 54ch;
+  margin: var(--m-foot) 0 0;
+}
+.station--minor .station__standfirst {
+  font-size: var(--t-body);
+  margin-top: var(--m-palm);
+}
+
+/* A gradation strip beneath the crest rule, carrying the
+   measure's own tick language into every section head so the
+   nilometer motif recurs rather than appearing once. */
+.station__gradations {
+  height: var(--m-finger);
+  margin-top: calc(var(--m-foot) * -1 + 2px);
+  margin-bottom: var(--m-foot);
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--rule-plain) 0 1px,
+    transparent 1px 12px
+  );
+  opacity: 0.7;
+}
+
+/* Rhythm: sections alternate density. A station that follows
+   a dense table gets more air above it than one following a
+   short passage, so the scroll has a pulse. */
+.station + .station { margin-top: var(--m-crest); }
+
+/* ============================================================
+   PROSE IN A SCANNING INTERFACE
+
+   Long paragraphs of explanation were sitting inside a
+   register people scan. Nobody reads them there. These give
+   prose a shape the eye can enter and leave at any point.
+   ============================================================ */
+
+/* A lede: the one sentence that must be read, set larger and
+   given room, so it is not competing with the table beneath. */
+.lede {
+  font-size: var(--t-lead);
+  line-height: var(--lh-body);
+  color: var(--ink-secondary);
+  max-width: 54ch;
+  margin: var(--m-foot) 0 0;
+}
+.lede strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Noted list: prose broken into scannable claims, each with a
+   bronze gradation mark so the list reads as a ruled register
+   rather than a bulleted paragraph. */
+.noted {
+  list-style: none;
+  margin: var(--m-foot) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  max-width: 60ch;
+}
+.noted > li {
+  padding: var(--m-palm) 0 var(--m-palm) var(--m-foot);
+  border-top: var(--rule-hair) solid var(--rule-quiet);
+  position: relative;
+  font-size: var(--t-fine);
+  color: var(--ink-secondary);
+}
+[dir="rtl"] .noted > li {
+  padding-left: 0;
+  padding-right: var(--m-foot);
+}
+/* The mark is a gradation, not a bullet: two ticks at the
+   measure's own pitch. */
+.noted > li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: calc(var(--m-palm) + 0.45em);
+  width: var(--m-palm);
+  height: 1px;
+  background: var(--bronze);
+}
+.noted > li strong {
+  color: var(--ink);
+  font-weight: 600;
+  display: block;
+}
+
+/* An aside note: short, quiet, set against the paper's sunk
+   tone so it reads as marginalia rather than body copy. */
+.marginal {
+  font-size: var(--t-fine);
+  color: var(--ink-tertiary);
+  max-width: 46ch;
+  margin: var(--m-foot) 0 0;
+  padding-inline-start: var(--m-foot);
+  border-inline-start: var(--rule-mid) solid var(--bronze);
+}
+
+/* A pull statement: the one claim worth stopping for, set in
+   the record face at station scale. Used once per page at
+   most — it stops being a peak if it repeats. */
+.pull {
+  font-family: var(--font-record);
+  font-size: clamp(1.375rem, 2.6vw, var(--t-station));
+  font-weight: 500;
+  line-height: var(--lh-record);
+  letter-spacing: var(--tr-cubit);
+  color: var(--ink);
+  max-width: 26ch;
+  margin: 0;
+  text-wrap: balance;
+}
+
+}

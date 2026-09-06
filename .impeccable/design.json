@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-05T00:00:00Z",
+  "title": "Design System: Nile Cruise MCP",
+  "extensions": {
+    "colorMeta": {
+      "paper": { "role": "neutral", "displayName": "Almanac Paper", "canonical": "#F4EFE4", "tonalRamp": ["#2A2620", "#3F3931", "#575044", "#736A5A", "#948972", "#B8AC92", "#D8CDB4", "#F4EFE4"] },
+      "paper-raised": { "role": "neutral", "displayName": "Raised Paper", "canonical": "#FAF7F0", "tonalRamp": ["#2C2921", "#423D33", "#5A5346", "#776E5D", "#998E78", "#BEB299", "#DDD3BC", "#FAF7F0"] },
+      "paper-sunk": { "role": "neutral", "displayName": "Sunk Paper", "canonical": "#EAE3D3", "tonalRamp": ["#282419", "#3C3627", "#544C37", "#6F654A", "#8F8362", "#B3A681", "#D0C4A8", "#EAE3D3"] },
+      "paper-edge": { "role": "neutral", "displayName": "The Deckle", "canonical": "#DED5C1", "tonalRamp": ["#25211711", "#38321F", "#4F472C", "#695F3D", "#887C53", "#AA9D74", "#C6BA9C", "#DED5C1"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#1C1A15", "tonalRamp": ["#1C1A15", "#332F26", "#4A4437", "#635B49", "#7E755E", "#9C9179", "#BFB59D", "#E2DACA"] },
+      "ink-secondary": { "role": "neutral", "displayName": "Secondary Ink", "canonical": "#4A4437", "tonalRamp": ["#1B1913", "#2F2B21", "#4A4437", "#615949", "#7C725D", "#9A8F76", "#BDB197", "#E0D8C4"] },
+      "ink-tertiary": { "role": "neutral", "displayName": "Tertiary Ink", "canonical": "#6E6553", "tonalRamp": ["#1E1B16", "#332E25", "#4C4536", "#6E6553", "#8A8069", "#A89C82", "#C7BCA1", "#E7DFCC"] },
+      "ink-quiet": { "role": "neutral", "displayName": "Quiet Ink", "canonical": "#8C8371", "tonalRamp": ["#221F1A", "#39342B", "#524B3E", "#6E6553", "#8C8371", "#A9A08B", "#C8BFA9", "#E6DFCE"] },
+      "lapis": { "role": "primary", "displayName": "Lapis", "canonical": "#1B3A5C", "tonalRamp": ["#0A1725", "#122740", "#1B3A5C", "#254E79", "#2C5C8F", "#4E7FAE", "#8DAAC9", "#E3E9F0"] },
+      "lapis-bright": { "role": "primary", "displayName": "Bright Lapis", "canonical": "#2C5C8F", "tonalRamp": ["#0C1B2A", "#132B44", "#1B3A5C", "#234C77", "#2C5C8F", "#5480AC", "#94AFCB", "#E3E9F0"] },
+      "lapis-wash": { "role": "primary", "displayName": "Lapis Wash", "canonical": "#E3E9F0", "tonalRamp": ["#0F1A24", "#1B3040", "#28475E", "#3B6285", "#5B84A8", "#8FAAC5", "#BCCCDD", "#E3E9F0"] },
+      "bronze": { "role": "secondary", "displayName": "Oxidized Bronze", "canonical": "#8A6A3B", "tonalRamp": ["#241B0F", "#3A2C18", "#5E4726", "#7A5C31", "#8A6A3B", "#AC8B5C", "#CBAF89", "#EFE7D6"] },
+      "bronze-deep": { "role": "secondary", "displayName": "Deep Bronze", "canonical": "#5E4726", "tonalRamp": ["#1F1710", "#33261415", "#4A3820", "#5E4726", "#7C5F35", "#9E7F52", "#C2A57E", "#EFE7D6"] },
+      "bronze-wash": { "role": "secondary", "displayName": "Bronze Wash", "canonical": "#EFE7D6", "tonalRamp": ["#252017", "#3B3324", "#544933", "#726348", "#948263", "#B8A88A", "#D6C9B0", "#EFE7D6"] },
+      "reed": { "role": "tertiary", "displayName": "Reed Green", "canonical": "#3F5D4E", "tonalRamp": ["#131C18", "#1F2E27", "#2E453A", "#3F5D4E", "#547A66", "#7A9C8A", "#A9C3B5", "#E4EBE5"] },
+      "reed-wash": { "role": "tertiary", "displayName": "Reed Wash", "canonical": "#E4EBE5", "tonalRamp": ["#161D19", "#243029", "#35473C", "#496053", "#66806F", "#93AC9C", "#BFD1C6", "#E4EBE5"] },
+      "silt": { "role": "tertiary", "displayName": "Silt Red", "canonical": "#8C2F22", "tonalRamp": ["#2A0E0A", "#421512", "#5E1F18", "#75261D", "#8C2F22", "#B04D3D", "#CE8578", "#F5E4E0"] },
+      "silt-wash": { "role": "tertiary", "displayName": "Silt Wash", "canonical": "#F5E4E0", "tonalRamp": ["#2B1512", "#43201C", "#5D2D27", "#7C3E36", "#A2604F", "#C59084", "#DEBAB1", "#F5E4E0"] },
+      "rule-plain": { "role": "neutral", "displayName": "Plain Rule", "canonical": "#C8BCA2", "tonalRamp": ["#211E17", "#353022", "#4C4530", "#655C40", "#847A56", "#A69B78", "#C8BCA2", "#E6DFCD"] },
+      "band-luxury": { "role": "primary", "displayName": "Luxury Station", "canonical": "#1B3A5C", "tonalRamp": ["#0A1725", "#122740", "#1B3A5C", "#254E79", "#2C5C8F", "#4E7FAE", "#8DAAC9", "#DCE6F0"] },
+      "band-deluxe": { "role": "tertiary", "displayName": "Deluxe Station", "canonical": "#3F5D4E", "tonalRamp": ["#131C18", "#1F2E27", "#2E453A", "#3F5D4E", "#547A66", "#7A9C8A", "#A9C3B5", "#DDE9E2"] },
+      "band-superior": { "role": "secondary", "displayName": "Superior Station", "canonical": "#7A5C2E", "tonalRamp": ["#1F1710", "#332618", "#4A3821", "#61492A", "#7A5C2E", "#9E7C4D", "#C4A67C", "#E9DCC3"] },
+      "band-standard": { "role": "secondary", "displayName": "Standard Station", "canonical": "#6E5B33", "tonalRamp": ["#1D1811", "#2F2719", "#443823", "#59492B", "#6E5B33", "#917A50", "#B9A37E", "#E4D9C2"] },
+      "band-basic": { "role": "neutral", "displayName": "Basic Station", "canonical": "#5E5241", "tonalRamp": ["#1A1712", "#2B261D", "#3E3729", "#4E4535", "#5E5241", "#82755E", "#AC9E86", "#DDD2BC"] },
+      "selection-bg": { "role": "neutral", "displayName": "Selection Ground", "canonical": "#D9E2EC", "tonalRamp": ["#0F1720", "#1C2A38", "#2B4055", "#3E5A75", "#5E7C99", "#8FA6BC", "#B8C8D8", "#D9E2EC"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The single page headline, capped at a 16ch measure. Zilla Slab 600." },
+      "reading": { "displayName": "The Reading", "purpose": "Score numeral at cubit scale (44px) on a record. The largest element in the register and the reason the number leads." },
+      "headline": { "displayName": "Station", "purpose": "Section heads and band-station labels, always sitting on a rule." },
+      "title": { "displayName": "Record", "purpose": "Vessel names, prices, and panel headings at 22px." },
+      "lead": { "displayName": "Lead", "purpose": "The paragraph under the display headline; assistant questions." },
+      "body": { "displayName": "Body", "purpose": "Default prose at the 16px WCAG floor, capped at 68ch." },
+      "fine": { "displayName": "Fine", "purpose": "Table meta, captions, footer prose, filter labels." },
+      "label": { "displayName": "Rubric", "purpose": "The almanac's small tracked uppercase label: column heads, legends, nav, colophon." },
+      "arabic-display": { "displayName": "Arabic Display", "purpose": "Noto Kufi Arabic for headings under :lang(ar) and [dir=rtl]. Zero tracking." },
+      "arabic-body": { "displayName": "Arabic Body", "purpose": "Noto Naskh Arabic for reading, line-height opened to 1.75." }
+    },
+    "shadows": [
+      { "name": "lift-row", "value": "0 1px 2px rgba(28, 26, 21, 0.06), 0 2px 6px rgba(28, 26, 21, 0.05)", "purpose": "A record row under the cursor, paired with a shift to raised paper. Never at rest." },
+      { "name": "lift-panel", "value": "0 4px 10px rgba(28, 26, 21, 0.08), 0 12px 32px rgba(28, 26, 21, 0.10)", "purpose": "The assistant drawer and its fixed launcher, over a 35% ink scrim." }
+    ],
+    "motion": [
+      { "name": "ease-rise", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Exponential ease-out for the flood rise. Bars scale from their datum the way water rises against a scale." },
+      { "name": "ease-settle", "value": "cubic-bezier(0.33, 1, 0.68, 1)", "purpose": "Default easing for state transitions: links, plates, record hover." },
+      { "name": "dur-instant", "value": "90ms", "purpose": "Press-down on a plate." },
+      { "name": "dur-control", "value": "160ms", "purpose": "Control and row state changes." },
+      { "name": "dur-panel", "value": "260ms", "purpose": "Panel open and close." },
+      { "name": "dur-rise", "value": "900ms", "purpose": "The flood rise. Staggered 90ms per score dimension so Service (30 points) leads; 70ms per band segment on the fleet measure." }
+    ],
+    "rules": [
+      { "name": "rule-hair", "value": "0.5px", "purpose": "Hairline separator in key lists and the masthead's underline." },
+      { "name": "rule-thin", "value": "1px", "purpose": "Record row bottoms, table rows, fieldset separators, control borders." },
+      { "name": "rule-mid", "value": "2px", "purpose": "Section head underline, table total rule, mobile nav top edge, focus ring width." },
+      { "name": "rule-heavy", "value": "3px", "purpose": "Declared in the scale as the step between mid and crest." },
+      { "name": "rule-crest", "value": "6px", "purpose": "Major page divisions and the footer's closing rule." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Plate",
+      "kind": "button",
+      "refersTo": "plate-primary",
+      "description": "The sole action control. Lapis fill, paper text, square letterpress plate.",
+      "html": "<button class=\"ds-plate ds-plate-primary\">Read the fleet</button>",
+      "css": ".ds-plate { min-height: 2.75rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 3px; font-family: var(--font-text, 'Public Sans', ui-sans-serif, system-ui, sans-serif); font-size: 1rem; font-weight: 600; letter-spacing: 0.01em; cursor: pointer; transition: background-color 160ms cubic-bezier(0.33,1,0.68,1), color 160ms cubic-bezier(0.33,1,0.68,1), transform 90ms cubic-bezier(0.33,1,0.68,1); } .ds-plate:active { transform: translateY(1px); } .ds-plate[disabled] { opacity: 0.45; cursor: not-allowed; } .ds-plate-primary { background: var(--lapis, #1B3A5C); color: var(--paper, #F4EFE4); border: 1px solid var(--lapis, #1B3A5C); } .ds-plate-primary:hover:not([disabled]) { background: var(--lapis-bright, #2C5C8F); } .ds-plate-primary:focus-visible { outline: 2px solid var(--lapis, #1B3A5C); outline-offset: 2px; }"
+    },
+    {
+      "name": "Quiet Plate",
+      "kind": "button",
+      "refersTo": "plate-quiet",
+      "description": "The secondary control. Transparent with a plain rule; the border darkens to ink on hover.",
+      "html": "<button class=\"ds-plate ds-plate-quiet\">Open the full register</button>",
+      "css": ".ds-plate { min-height: 2.75rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 3px; font-family: var(--font-text, 'Public Sans', ui-sans-serif, system-ui, sans-serif); font-size: 1rem; font-weight: 600; letter-spacing: 0.01em; cursor: pointer; transition: background-color 160ms cubic-bezier(0.33,1,0.68,1), border-color 160ms cubic-bezier(0.33,1,0.68,1), transform 90ms cubic-bezier(0.33,1,0.68,1); } .ds-plate:active { transform: translateY(1px); } .ds-plate-quiet { background: transparent; color: var(--ink, #1C1A15); border: 1px solid #C8BCA2; } .ds-plate-quiet:hover:not([disabled]) { background: var(--paper-sunk, #EAE3D3); border-color: var(--ink, #1C1A15); } .ds-plate-quiet:focus-visible { outline: 2px solid var(--lapis, #1B3A5C); outline-offset: 2px; }"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "A sunk-paper well with a rubric label above it. Numeric and date fields set tabular figures.",
+      "html": "<div class=\"ds-field-group\"><label class=\"ds-rubric\" for=\"ds-guests\">Guests</label><input class=\"ds-field\" id=\"ds-guests\" type=\"number\" min=\"1\" max=\"8\" value=\"2\"></div>",
+      "css": ".ds-field-group { display: flex; flex-direction: column; gap: 0.25rem; } .ds-rubric { font-family: var(--font-text, 'Public Sans', ui-sans-serif, system-ui, sans-serif); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-tertiary, #6E6553); } .ds-field { min-height: 2.75rem; padding: 0 0.75rem; background: var(--paper-sunk, #EAE3D3); color: var(--ink, #1C1A15); border: 1px solid #C8BCA2; border-radius: 3px; font-family: inherit; font-size: 1rem; font-variant-numeric: tabular-nums lining-nums; } .ds-field::placeholder { color: var(--ink-tertiary, #6E6553); opacity: 1; } .ds-field:focus-visible { outline: 2px solid var(--lapis, #1B3A5C); outline-offset: 2px; }"
+    },
+    {
+      "name": "Record Row",
+      "kind": "custom",
+      "refersTo": "record",
+      "description": "The fleet's unit: a ruled row, never a card. Reading leads at cubit scale, name and route centre, price at the trailing edge.",
+      "html": "<article class=\"ds-record\"><div class=\"ds-record-reading\"><span class=\"ds-reading\">94.20</span><span class=\"ds-band-label\"><span class=\"ds-band ds-band-luxury\"></span><span class=\"ds-rubric\">Luxury</span></span></div><div class=\"ds-record-body\"><h3 class=\"ds-record-name\"><a href=\"#\">Sonesta Star Goddess</a></h3><p class=\"ds-record-meta\">Aswan — Luxor · 4 nights · Sonesta</p></div><div class=\"ds-record-price\"><span class=\"ds-price\">6,400</span><span class=\"ds-record-meta\"> EGP</span><div class=\"ds-record-note\">per person per night</div></div></article>",
+      "css": ".ds-record { display: grid; grid-template-columns: 7.5rem 1fr auto; gap: 0.75rem 1.5rem; align-items: start; padding: 1.5rem 1rem; border-bottom: 1px solid var(--paper-edge, #DED5C1); font-family: var(--font-text, 'Public Sans', ui-sans-serif, system-ui, sans-serif); color: var(--ink, #1C1A15); transition: background-color 160ms cubic-bezier(0.33,1,0.68,1), box-shadow 160ms cubic-bezier(0.33,1,0.68,1); } .ds-record:hover { background-color: var(--paper-raised, #FAF7F0); box-shadow: 0 1px 2px rgba(28,26,21,0.06), 0 2px 6px rgba(28,26,21,0.05); } .ds-record:has(:focus-visible) { background-color: var(--lapis-wash, #E3E9F0); } .ds-record-reading { display: flex; flex-direction: column; } .ds-reading { font-family: var(--font-record, 'Zilla Slab', ui-serif, Georgia, serif); font-size: 2.75rem; font-weight: 600; line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums lining-nums; } .ds-band-label { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; } .ds-band { position: relative; display: inline-block; width: 0.75rem; height: 0.75rem; overflow: hidden; flex-shrink: 0; } .ds-band-luxury { background-color: #1B3A5C; } .ds-rubric { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-secondary, #4A4437); } .ds-record-name { font-family: var(--font-record, 'Zilla Slab', ui-serif, Georgia, serif); font-size: 1.375rem; font-weight: 500; line-height: 1.2; margin: 0; } .ds-record-name a { color: var(--lapis, #1B3A5C); text-decoration: none; } .ds-record-name a:hover { color: var(--lapis-bright, #2C5C8F); text-decoration: underline; text-underline-offset: 0.18em; } .ds-record-meta { font-size: 0.8125rem; color: var(--ink-secondary, #4A4437); margin: 0.25rem 0 0; } .ds-record-price { text-align: right; font-variant-numeric: tabular-nums lining-nums; } .ds-price { font-family: var(--font-record, 'Zilla Slab', ui-serif, Georgia, serif); font-size: 1.375rem; font-weight: 500; } .ds-record-note { font-size: 0.6875rem; color: var(--ink-tertiary, #6E6553); }"
+    },
+    {
+      "name": "Band Mark",
+      "kind": "chip",
+      "refersTo": "rubric",
+      "description": "A quality band shown in all three channels: hue, fill pattern, and written name. Grayscale and color-blind safe by construction.",
+      "html": "<ul class=\"ds-bandkey\"><li><span class=\"ds-bm ds-bm-luxury\"></span>Luxury</li><li><span class=\"ds-bm ds-bm-deluxe\"></span>Deluxe</li><li><span class=\"ds-bm ds-bm-superior\"></span>Superior</li><li><span class=\"ds-bm ds-bm-standard\"></span>Standard</li><li><span class=\"ds-bm ds-bm-basic\"></span>Basic</li></ul>",
+      "css": ".ds-bandkey { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; font-family: var(--font-text, 'Public Sans', ui-sans-serif, system-ui, sans-serif); font-size: 0.8125rem; color: var(--ink, #1C1A15); } .ds-bandkey li { display: flex; align-items: center; gap: 0.5rem; border-top: 0.5px solid var(--paper-edge, #DED5C1); padding-top: 0.5rem; } .ds-bm { position: relative; display: inline-block; width: 0.75rem; height: 0.75rem; overflow: hidden; flex-shrink: 0; } .ds-bm::after { content: \"\"; position: absolute; inset: 0; pointer-events: none; } .ds-bm-luxury { background-color: #1B3A5C; } .ds-bm-deluxe { background-color: #3F5D4E; } .ds-bm-deluxe::after { background: repeating-linear-gradient(90deg, rgba(244,239,228,.30) 0 1px, transparent 1px 4px); } .ds-bm-superior { background-color: #7A5C2E; } .ds-bm-superior::after { background: repeating-linear-gradient(45deg, rgba(244,239,228,.32) 0 1.5px, transparent 1.5px 6px); } .ds-bm-standard { background-color: #6E5B33; } .ds-bm-standard::after { background: repeating-linear-gradient(90deg, rgba(244,239,228,.34) 0 2px, transparent 2px 9px); } .ds-bm-basic { background-color: #5E5241; } .ds-bm-basic::after { background: repeating-linear-gradient(45deg, rgba(244,239,228,.30) 0 1px, transparent 1px 7px), repeating-linear-gradient(-45deg, rgba(244,239,228,.30) 0 1px, transparent 1px 7px); }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "plate-quiet",
+      "description": "A hidden radio with a labelled span as the control. Selected inverts to a lapis fill.",
+      "html": "<div class=\"ds-chips\"><label class=\"ds-chip\"><input type=\"radio\" name=\"ds-nights\" checked><span>Any</span></label><label class=\"ds-chip\"><input type=\"radio\" name=\"ds-nights\"><span>3</span></label><label class=\"ds-chip\"><input type=\"radio\" name=\"ds-nights\"><span>4</span></label></div>",
+      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; font-family: var(--font-text, 'Public Sans', ui-sans-serif, system-ui, sans-serif); } .ds-chip { cursor: pointer; min-height: 2.75rem; } .ds-chip input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); } .ds-chip span { display: inline-flex; align-items: center; justify-content: center; min-height: 2.75rem; padding: 0 1.5rem; font-size: 0.8125rem; font-variant-numeric: tabular-nums lining-nums; border: 1px solid #C8BCA2; border-radius: 3px; background: transparent; color: var(--ink, #1C1A15); transition: background-color 160ms cubic-bezier(0.33,1,0.68,1); } .ds-chip input:checked + span { background: var(--lapis, #1B3A5C); color: var(--paper, #F4EFE4); } .ds-chip input:focus-visible + span { outline: 2px solid var(--lapis, #1B3A5C); outline-offset: 2px; }"
+    },
+    {
+      "name": "Score Bar",
+      "kind": "custom",
+      "refersTo": "record",
+      "description": "One dimension of the audit: a band-patterned fill rising in a sunk-paper track, with a plain rule marking the maximum.",
+      "html": "<div class=\"ds-bar-row\"><span class=\"ds-bar-label\">Service<span class=\"ds-bar-note\">Crew attentiveness, competence, and manner</span></span><div class=\"ds-bar-track\"><div class=\"ds-bar-fill ds-bm-luxury\"></div><div class=\"ds-bar-max\"></div></div><span class=\"ds-bar-score\">28<span class=\"ds-bar-of\">/30</span></span></div>",
+      "css": ".ds-bar-row { display: grid; grid-template-columns: 1fr 42% auto; gap: 1.5rem; align-items: center; padding: 0.75rem 0; border-top: 1px solid var(--paper-edge, #DED5C1); font-family: var(--font-text, 'Public Sans', ui-sans-serif, system-ui, sans-serif); color: var(--ink, #1C1A15); } .ds-bar-label { display: block; font-size: 1rem; } .ds-bar-note { display: block; font-size: 0.6875rem; color: var(--ink-tertiary, #6E6553); max-width: 34ch; line-height: 1.35; } .ds-bar-track { position: relative; height: 0.6rem; width: 100%; background: var(--paper-sunk, #EAE3D3); } .ds-bar-fill { position: absolute; inset-block: 0; left: 0; width: 93%; overflow: hidden; background-color: #1B3A5C; transform-origin: left center; animation: ds-flood-rise 900ms cubic-bezier(0.16,1,0.3,1) both; } .ds-bar-max { position: absolute; inset-block: 0; right: 0; width: 1px; background: #C8BCA2; } .ds-bar-score { font-family: var(--font-record, 'Zilla Slab', ui-serif, Georgia, serif); font-weight: 600; font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; } .ds-bar-of { font-family: var(--font-text, 'Public Sans', ui-sans-serif, system-ui, sans-serif); font-size: 0.8125rem; font-weight: 400; color: var(--ink-tertiary, #6E6553); } @keyframes ds-flood-rise { from { transform: scaleX(0); } to { transform: scaleX(1); } } @media (prefers-reduced-motion: reduce) { .ds-bar-fill { animation: none; transform: scaleX(1); } }"
+    },
+    {
+      "name": "Section Head",
+      "kind": "custom",
+      "refersTo": "record",
+      "description": "The almanac's only sectioning device: a station-scale heading sitting on a 2px ink rule, with an optional rubric aside.",
+      "html": "<div class=\"ds-sectionhead\"><h2>The fleet</h2><span class=\"ds-rubric\">5 of 79 shown</span></div>",
+      "css": ".ds-sectionhead { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; padding-bottom: 0.5rem; border-bottom: 2px solid var(--ink, #1C1A15); } .ds-sectionhead h2 { font-family: var(--font-record, 'Zilla Slab', ui-serif, Georgia, serif); font-size: 1.75rem; font-weight: 600; line-height: 1.2; margin: 0; color: var(--ink, #1C1A15); } .ds-sectionhead .ds-rubric { font-family: var(--font-text, 'Public Sans', ui-sans-serif, system-ui, sans-serif); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-tertiary, #6E6553); }"
+    },
+    {
+      "name": "Mobile Nav",
+      "kind": "nav",
+      "refersTo": "nav-item-active",
+      "description": "Fixed bottom navigation below md. Four equal cells labelled in words, never glyphs; the active cell inverts to lapis.",
+      "html": "<nav class=\"ds-mobilenav\" aria-label=\"Sections\"><ul><li><a href=\"#\" aria-current=\"page\">Almanac</a></li><li><a href=\"#\">Register</a></li><li><a href=\"#\">Request</a></li><li><a href=\"#\">Bids</a></li></ul></nav>",
+      "css": ".ds-mobilenav { background: var(--paper-raised, #FAF7F0); border-top: 2px solid var(--ink, #1C1A15); font-family: var(--font-text, 'Public Sans', ui-sans-serif, system-ui, sans-serif); } .ds-mobilenav ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); } .ds-mobilenav a { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 2.75rem; padding: 0.75rem 0.25rem; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none; color: var(--ink-secondary, #4A4437); background: transparent; } .ds-mobilenav a[aria-current=\"page\"] { color: var(--paper, #F4EFE4); background: var(--lapis, #1B3A5C); } .ds-mobilenav a:hover:not([aria-current=\"page\"]) { background: var(--paper-sunk, #EAE3D3); } .ds-mobilenav a:focus-visible { outline: 2px solid var(--lapis, #1B3A5C); outline-offset: -2px; }"
+    },
+    {
+      "name": "Graduated Measure",
+      "kind": "custom",
+      "refersTo": "record",
+      "description": "The signature device: a nilometer scale with drawn gradations, band stations proportioned by vessel count, and one tick per audited vessel seated on the datum.",
+      "html": "<div class=\"ds-measure\"><div class=\"ds-seg ds-bm-basic\" style=\"flex:6\"><span>6</span></div><div class=\"ds-seg ds-bm-standard\" style=\"flex:11\"><span>11</span></div><div class=\"ds-seg ds-bm-superior\" style=\"flex:15\"><span>15</span></div><div class=\"ds-seg ds-bm-deluxe\" style=\"flex:31\"><span>31</span></div><div class=\"ds-seg ds-bm-luxury\" style=\"flex:16\"><span>16</span></div><div class=\"ds-grad\"></div></div>",
+      "css": ".ds-measure { position: relative; display: flex; height: 3rem; border-top: 0.5px solid #C8BCA2; border-bottom: 2px solid var(--ink, #1C1A15); } .ds-seg { position: relative; overflow: hidden; } .ds-seg span { position: absolute; bottom: 0.25rem; left: 0.75rem; font-family: var(--font-record, 'Zilla Slab', ui-serif, Georgia, serif); font-size: 0.8125rem; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums lining-nums; color: var(--paper, #F4EFE4); } .ds-grad { position: absolute; inset: 0; pointer-events: none; } .ds-grad::before, .ds-grad::after { content: \"\"; position: absolute; left: 0; right: 0; top: 0; } .ds-grad::before { height: 34%; background-image: repeating-linear-gradient(90deg, rgba(244,239,228,0.55) 0 1px, transparent 1px 1.6667%); } .ds-grad::after { height: 62%; background-image: repeating-linear-gradient(90deg, rgba(244,239,228,0.85) 0 1.5px, transparent 1.5px 8.3335%); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Flood Almanac",
+    "overview": "The Nile was measured and published every year for five thousand years. A nilometer graded the flood in cubits, and that number set taxes, planting, and survival. The measurement was the product, and it was set as a ruled table. This system reckons 79 vessels on one graduated measure and publishes them the same way: the audited number leads, and photography corroborates. That inversion is the whole thesis — the booking-aggregator arrangement, where a photo grid leads and the score is a badge pinned to a corner, is the confirmed anti-reference.\n\nThe surface is laid almanac paper: a warm ground with a real tooth, painted directly onto the body as chain lines, laid lines, and a faint fibre mottle, all held under 4% opacity so text contrast is untouched. On top of that ground, hierarchy is carried entirely by ruled lines and by the size of numerals. There is no card anywhere in this build. A vessel is a ruled row, a section is a heavy rule with a heading sitting on it, and a page closes on a six-pixel crest rule rather than trailing off into blank paper. Depth is declared once, by rule weight; the two shadow tokens exist only for the two things that genuinely float above the page.\n\nThe palette is restrained by construction. Paper and ink do almost all the work; lapis is the single action accent and is spent on every link, every primary control, every focus ring and nothing else; oxidized bronze is structure and never signals; reed green marks verified facts and silt red marks problems. Density is high and unapologetic — this is a document to be read in daylight, often on a phone outdoors, and possibly printed or screenshotted for a travelling companion, not an atmosphere to sit inside.",
+    "keyCharacteristics": [
+      "Laid-paper ground with a painted tooth; ink and rules carry all hierarchy",
+      "One action accent (lapis) and nothing else that reads as clickable",
+      "Records are ruled rows, never cards",
+      "Numerals at cubit scale (44px) set the visual hierarchy of the register",
+      "Five rule weights from hairline to crest replace shadow-based elevation",
+      "Every quality band carries three channels: name, fill pattern, hue",
+      "Spacing named for nilometer gradations on a 4px base",
+      "One authored motion moment: the flood rise",
+      "RTL and Arabic are structural, not retrofitted"
+    ],
+    "rules": [
+      { "name": "The One Accent Rule", "body": "Lapis is the only color in this system that means \"you can act on this.\" Bronze is structure, reed is verification, silt is failure. If a new element needs to look interactive, it takes lapis; if it needs to look important but is not interactive, it takes rule weight or type scale instead. Nothing else may be promoted to an accent.", "section": "colors" },
+      { "name": "The Measured Band Rule", "body": "The five band colors were darkened after a contrast audit so paper-colored text clears 4.5:1 on every band. The measured ratios are luxury 10.14, deluxe 6.34, superior 5.39, standard 5.71, basic 6.64. Do not lighten a band color without re-measuring paper-on-band and recording the new figure.", "section": "colors" },
+      { "name": "The Three Channel Rule", "body": "A quality band is never communicated by hue alone. Every band carries a written name, a distinct CSS fill pattern, and a hue. Luxury is solid, Deluxe is a dense fine rule, Superior is diagonal, Standard is a wide rule, and Basic is the sparsest cross-hatch. Any new band or score category must ship all three channels.", "section": "colors" },
+      { "name": "The Number Leads Rule", "body": "On any surface where a vessel is being judged, the audited score is the largest element in its row, set in the record face at cubit scale with tabular lining numerals. The vessel's name is subordinate to its reading. This is the inversion the product exists to make.", "section": "typography" },
+      { "name": "The Tabular Figure Rule", "body": "Every figure in this product is a measurement. Tables, time elements, number inputs, and anything marked .tabular or [data-numeral] set tabular-nums lining-nums. Digits must line up in a column so two readings can be compared by eye.", "section": "typography" },
+      { "name": "The Arabic Tracking Rule", "body": "Arabic never takes Latin tracking. Under :lang(ar) and [dir=\"rtl\"], letter-spacing resets to zero, line-height opens to 1.75, and the rubric drops its uppercase transform and tracking in favor of weight 700 — because Arabic has no small caps to imitate.", "section": "typography" },
+      { "name": "The Two Column Register Rule", "body": "A record never collapses into a stack of unlabeled fragments on narrow screens. The reading stays in column one at full cubit scale, and the price moves under the name rather than being squeezed off the edge.", "section": "layout" },
+      { "name": "The Declare Once Rule", "body": "An element's depth is expressed by a rule, or by a shadow, never by both. A bordered box with a drop shadow under it is two claims about the same edge; the almanac makes one. Sections, rows, panels, and tables get rules. Only true overlays get shadows.", "section": "elevation" },
+      { "name": "The Flood Rise Rule", "body": "There is one authored motion moment in this system: flood-rise, an exponential ease-out (cubic-bezier(0.16, 1, 0.3, 1)) over 900ms that scales a bar horizontally from its datum, the way water rises against a scale. Score bars stagger by dimension weight so Service (30 points) leads; band segments on the fleet measure stagger at 70ms intervals. Everything else moves at 90–260ms or not at all. The animation always begins from an already-visible datum, so no content depends on motion to be read, and prefers-reduced-motion: reduce cancels it entirely along with smooth scrolling.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do lead with the number. On any surface where vessels are compared, the audited reading is the largest element in the row, set in Zilla Slab at cubit scale (44px) with tabular lining figures.",
+      "Do express structure with rule weight. Five weights (0.5px, 1px, 2px, 3px, 6px) and four rule colors carry every hierarchy this system needs.",
+      "Do spend lapis on actions and nothing else. Links, primary plates, selected chips, active nav cells, focus rings, range accents.",
+      "Do ship all three channels for any score band: written name, fill pattern, hue.",
+      "Do use logical properties throughout — ps/pe, ms/me, text-start/text-end, borderInlineStart, inset-x. RTL is structural here, and the flood rise flips its transform origin under [dir=\"rtl\"].",
+      "Do keep every interactive target at or above 44px (hair-based padding plus min-height: 2.75rem).",
+      "Do name spacing by nilometer gradation (hair through crest) rather than t-shirt sizes.",
+      "Do print state as content in the table's own language — \"No cabins on these dates\" in silt, \"Cabins available\" in reed.",
+      "Do honor prefers-reduced-motion: the flood rise resolves instantly to its filled state and smooth scrolling is disabled."
+    ],
+    "donts": [
+      "Don't put a record in a card. No rounded container, no drop shadow at rest, no bordered box around a vessel. Records are ruled rows; this is a hard rule of the world.",
+      "Don't pair a border with a shadow on the same edge. Elevation is declared once.",
+      "Don't promote bronze, reed, or silt to an action color. Bronze is structure, reed is verification, silt is failure — none of them are ever a button or a link.",
+      "Don't lighten a band color without re-measuring paper-on-band contrast and recording the new ratio.",
+      "Don't set reading text below 16px, or place text on ink-quiet (3.2:1) at anything under large size.",
+      "Don't lead a surface with a hero photograph. The measure leads; photography corroborates.",
+      "Don't apply Latin tracking to Arabic, and don't fake Arabic small caps with text-transform — use weight 700 instead.",
+      "Don't paint the paper texture as an overlay element. It belongs on the body itself; an overlay lands behind positioned descendants and the grain disappears.",
+      "Don't label navigation or state with glyph icons. This build labels every destination in words on purpose.",
+      "Don't remove a focus ring. Re-place it if it collides, never delete it."
+    ]
+  }
+}
